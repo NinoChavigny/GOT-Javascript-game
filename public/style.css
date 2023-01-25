@@ -11,7 +11,8 @@ body{
     padding-top: 10%;
 }
 
-.btn.btn-success{
+.btn.btn-primary{
+    margin-top: 1em;
     padding: .4em 2em;
 }
 
