@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var database = require('./database');
 
 const  credential = {
     email : "admin@gmail.com",
@@ -8,13 +9,49 @@ const  credential = {
 
 // login user
 router.post('/login', (req, res)=>{
-    if(req.body.email == credential.email && req.body.password == credential.password){
-        req.session.user = req.body.email;
-        res.redirect('/route/dashboard');
-        //res.end("Login Successful...!");
-    }else{
-        res.end("Invalid Username")
+
+    var user_email_address = req.user_email_address;
+
+    var user_password = req.user_password;
+
+    if(user_email_address && user_password)
+    {
+        query = `
+        SELECT * FROM user_login 
+        WHERE user_email = "${user_email_address}"
+        `;
+
+        database.query(query, function(error, data){
+
+            console.log(data);
+
+            if(data.length > 0)
+            {
+                for(var count = 0; count < data.length; count++)
+                {
+                    if(data[count].user_password == user_password)
+                    {
+                        req.session.user = user_email_address;
+                        res.redirect('/route/dashboard');
+                    }
+                    else
+                    {
+                        res.end("Invalid Username or Password")
+                    }
+                }
+            }
+            else
+            {
+                res.end('Incorrect Email Address');
+            }
+            res.end();
+        });
     }
+    else
+    {
+        res.end('Please Enter Email Address and Password Details');
+    }
+
 });
 
 // route for dashboard

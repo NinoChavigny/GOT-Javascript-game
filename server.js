@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+const router = require('./router')
 const path = require('path');
 const bodyparser = require("body-parser");
 const session = require("express-session");
@@ -28,5 +29,7 @@ app.get('/',(req,res)=>{
     res.render('base', {title : "Login System"});
 
 })
+
+app.use('/route', router);
 
 app.listen(port, ()=>{console.log("Listening on port 3000")})
