@@ -50,6 +50,49 @@ router.post('/login', (req, res)=>{
 
 });
 
+router.get('/signup', (req, res) => {
+    res.render('signup', {title : "Sign up"})
+})
+
+/// login user
+router.post('/signup', (req, res)=>{
+
+    var email = req.body.email;
+
+    var pass = req.body.password;
+
+    var passconf = req.body.password_confirmation;
+
+    if(pass != passconf){
+        res.end('Passwords are not matching !');
+    }
+
+    console.log(req.body.email, req.body.password, req.body.password_confirmation);
+    
+
+    query = `SELECT user_email FROM user_login WHERE user_email = "${email}"`;
+    
+    query2 = `INSERT INTO user_login (user_email, user_password) VALUES ('${email}', '${pass}')`;
+
+
+
+
+    database.query(query, function(error, data){
+
+
+        if(data.length > 0)
+        {
+            res.end('Email Address already used !');
+        }
+        else
+        {
+            database.query(query2);
+            res.end();
+        }
+    });
+
+});
+
 
 // route for dashboard
 router.get('/dashboard', (req, res) => {
