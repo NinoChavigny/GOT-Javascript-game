@@ -7,52 +7,49 @@ const  credential = {
     password : "admin123"
 }
 
-// login user
+
+/// login user
 router.post('/login', (req, res)=>{
 
-    var user_email_address = req.user_email_address;
+    var user_email_address = req.body.email;
 
-    var user_password = req.user_password;
+    var user_password = req.body.password;
 
-    if(user_email_address && user_password)
-    {
-        query = `
-        SELECT * FROM user_login 
-        WHERE user_email = "${user_email_address}"
-        `;
+    console.log(req.body.email, req.body.user_password);
+    
 
-        database.query(query, function(error, data){
+    query = `
+    SELECT * FROM user_login 
+    WHERE user_email = "${user_email_address}"
+    `;
 
-            console.log(data);
+    database.query(query, function(error, data){
 
-            if(data.length > 0)
+
+        if(data.length > 0)
+        {
+            for(var count = 0; count < data.length; count++)
             {
-                for(var count = 0; count < data.length; count++)
+                if(data[count].user_password == user_password)
                 {
-                    if(data[count].user_password == user_password)
-                    {
-                        req.session.user = user_email_address;
-                        res.redirect('/route/dashboard');
-                    }
-                    else
-                    {
-                        res.end("Invalid Username or Password")
-                    }
+                    req.session.user = user_email_address;
+                    res.redirect('/route/dashboard');
+                }
+                else
+                {
+                    res.end("Invalid Username or Password")
                 }
             }
-            else
-            {
-                res.end('Incorrect Email Address');
-            }
-            res.end();
-        });
-    }
-    else
-    {
-        res.end('Please Enter Email Address and Password Details');
-    }
+        }
+        else
+        {
+            res.end('Incorrect Email Address');
+        }
+        res.end();
+    });
 
 });
+
 
 // route for dashboard
 router.get('/dashboard', (req, res) => {
