@@ -87,7 +87,7 @@ router.post('/signup', (req, res)=>{
         else
         {
             database.query(query2);
-            res.end();
+            res.redirect('/');
         }
     });
 

@@ -2,9 +2,9 @@
 
 body{
     font-family: 'Open Sans', sans-serif;
-    background-image: url('/assets/background_png.png');
+    /*background-image: url('/assets/background_png.png');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
 }
 
 .center-div{
@@ -22,4 +22,15 @@ form{
 
 #login .title > span{
     font-size: .8em;
+}
+
+#rooms {
+    display:inline-block;
+    margin-top: 10em;
+    margin-left: 15em;
+}
+
+#user-rooms {
+    display:inline-block;
+    margin-left: 30em;
 }
