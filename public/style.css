@@ -16,6 +16,10 @@ body{
     padding: .4em 2em;
 }
 
+.form-control{
+    margin-bottom: 1em;
+}
+
 form{
     padding: 0 3em;
 }

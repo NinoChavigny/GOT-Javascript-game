@@ -10,6 +10,26 @@
 
 <div class="text-center container w-25 border" id="rooms">
     <h3>All Games</h3>
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Players</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>
+                <button type="submit" id="bouton" class="btn btn-success rounded-pill">Submit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     <h5></h5>
 </div>
 
@@ -17,6 +37,19 @@
     <h3>Your Games</h3>
     <h5></h5>
 </div>
+
+<script>
+const ws = new WebSocket("ws://localhost:3000");
+
+var test = document.getElementById("bouton");
+
+//Handling the click event
+test.onclick = function () {
+    ws.send("Here's some text that the server is urgently awaiting!");
+   
+}
+
+</script>
 
 
 <%- include('footer') -%>

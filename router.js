@@ -2,11 +2,6 @@ var express = require("express");
 var router = express.Router();
 var database = require('./database');
 
-const  credential = {
-    email : "admin@gmail.com",
-    password : "admin123"
-}
-
 
 /// login user
 router.post('/login', (req, res)=>{
@@ -24,6 +19,7 @@ router.post('/login', (req, res)=>{
     `;
 
     database.query(query, function(error, data){
+        console.log(data);
 
 
         if(data.length > 0)
