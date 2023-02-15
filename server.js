@@ -41,7 +41,17 @@ const wss = new WebSocket.Server({ server:server });
 
 wss.on('connection', function connection(ws) {
   console.log('A new client Connected!');
-  ws.send('Welcome New Client!');
+  
+  query = `SELECT * FROM user_login WHERE user_email = "${user_email_address}"`;
+
+  database.query(query, function(error, data){
+
+
+    if(data.length > 0)
+    {
+        console.log
+    }
+});
 
 
   ws.on('message', function message(data) {
