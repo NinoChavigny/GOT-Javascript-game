@@ -29,6 +29,7 @@ router.post('/login', (req, res)=>{
                 if(data[count].user_password == user_password)
                 {
                     req.session.user = user_email_address;
+                    req.session.uid = data[count].user_id;
                     res.redirect('/route/dashboard');
                 }
                 else
@@ -93,7 +94,7 @@ router.post('/signup', (req, res)=>{
 // route for dashboard
 router.get('/dashboard', (req, res) => {
     if(req.session.user){
-        res.render('dashboard', {user : req.session.user})
+        res.render('dashboard', {user: req.session.user, uid : req.session.uid})
     }else{
         res.send("Unauthorize User")
     }
