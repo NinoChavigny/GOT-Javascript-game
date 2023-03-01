@@ -62,13 +62,12 @@ wss.on('connection', function connection(ws) {
 
 
   ws.on('message', function message(data) {
-    
+    data = data.toString();
     console.log(data);
-    /*
     let jsondata = JSON.parse(data);
     if(JSON.parse(data)[1] == 'join'){
 
-      query = `UPDATE table SET nom_colonne_1 = 'nouvelle valeur' WHERE condition`;
+      ///query = `UPDATE table SET nom_colonne_1 = 'nouvelle valeur' WHERE condition`;
 
 
 
@@ -90,6 +89,7 @@ wss.on('connection', function connection(ws) {
       if(data.length > 0)
       {
         let result = Object.values(JSON.parse(JSON.stringify(data)));
+        console.log(result)
       }
     });
 
@@ -98,7 +98,7 @@ wss.on('connection', function connection(ws) {
     })
   }
 
-*/});
+});
 
 });
 

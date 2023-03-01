@@ -149,7 +149,7 @@ tableData2.innerHTML = table2;
 function myFunction(element, uid) {
   console.log(element.id, uid);
 
-  ws.send(JSON.stringify(`["join","${element.id}", "${uid}"]`));
+  ws.send(`["join","${element.id}","${uid}"]`);
 }
 
 </script>
