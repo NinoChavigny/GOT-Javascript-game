@@ -34,11 +34,10 @@
 
 
 <script>
-const ws = new WebSocket("ws://localhost:3000");
+const ws = new WebSocket("ws://172.20.83.199:3000");
 var uid = JSON.parse('<%- JSON.stringify(uid) %>');
 
 ws.onopen = function() {
-  ws.send('Hello server');
 
 }
 
@@ -147,9 +146,11 @@ tableData2.innerHTML = table2;
 
 
 function myFunction(element, uid) {
-  console.log(element.id, uid);
 
-  ws.send(`["join","${element.id}","${uid}"]`);
+  const msg = `["join","${element.id}","${uid}"]`;
+
+  ws.send(msg);
+  
 }
 
 </script>
