@@ -20,6 +20,10 @@
 
 <div class="text-center container w-25 border" id="user-rooms">
     <h3>Your Games</h3>
+    <form onsubmit="create('<%- JSON.stringify(uid) %>')">
+      <input type="username" id="roomname" placeholder="room name" />
+      <input type="submit"  id="creation" value="Create Game" class="btn btn-success rounded-pill"></input>
+    </form>
     <table class="table" id="table2">
       
         
@@ -34,7 +38,7 @@
 
 
 <script>
-const ws = new WebSocket("ws://172.20.83.199:3000");
+const ws = new WebSocket("ws://localhost:3000");
 var uid = JSON.parse('<%- JSON.stringify(uid) %>');
 
 ws.onopen = function() {
@@ -46,12 +50,14 @@ ws.onmessage = function(event) {
   let tableData2 = document.getElementById("table2");
 
 
-
   let data = JSON.parse(event.data);
   let data2 = JSON.parse(event.data);
+  console.log("test1",data);
+  console.log("test2",data2);
   let test = 0;
 
   for(i = 0; i < data.length; i++){
+    console.log("testfor");
     for(j = 0; j < JSON.parse(data[i]['room_members_id']).length; j++){
       if(uid == JSON.parse(data[i]['room_members_id'])[j])
       {
@@ -68,8 +74,6 @@ ws.onmessage = function(event) {
       }
   }}
 
-  console.log(data);
-  console.log(data2);
   ///console.log(data);
 
   //set header of table
@@ -94,7 +98,7 @@ for(i = 0; i < data.length; i++){
       <th scope="row">${data[i]['room_id']}</th>
       <td>${data[i]['room_name']}</td>
       <td>${JSON.parse(data[i]['room_members_id']).length}/4</td>
-      <td><button type="submit" onclick="myFunction(this, ${uid})" id="${data[i]['room_id']}" class="btn btn-success rounded-pill">Join</button></td>
+      <td><button type="submit" onclick="join(this, ${uid})" id="${data[i]['room_id']}" class="btn btn-success rounded-pill">Join</button></td>
     </tr>`
 }}
 //close off table
@@ -145,12 +149,22 @@ tableData2.innerHTML = table2;
 ///var test = document.getElementById("bouton1");
 
 
-function myFunction(element, uid) {
+function join(element, uid) {
 
   const msg = `["join","${element.id}","${uid}"]`;
 
   ws.send(msg);
   
+}
+
+function create(uid) {
+  roomname = document.getElementById('roomname').value;
+  console.log(roomname);
+
+const msg = `["create","${uid}", "${roomname}"]`;
+
+ws.send(msg);
+
 }
 
 </script>

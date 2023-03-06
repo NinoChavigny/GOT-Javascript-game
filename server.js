@@ -54,6 +54,7 @@ wss.on('connection', function connection(ws) {
 
     if (data.length > 0) {
       let result = Object.values(JSON.parse(JSON.stringify(data)));
+      console.log(result);
       ws.send(JSON.stringify(result));
     }
   });
@@ -131,6 +132,42 @@ wss.on('connection', function connection(ws) {
 
 
     }
+
+
+
+
+
+
+          ///CREATING SYSTEM
+          if (dataparsed[0] == 'create') {
+            uid = dataparsed[1];
+            roomname = dataparsed[2];
+      
+      
+            createquery = `INSERT INTO rooms (room_name, room_members_id) VALUES ('${roomname}', JSON_ARRAY('${uid}'))`;
+            database.query(createquery, function (error, data3) {
+
+              query = `SELECT * FROM rooms`;
+              database.query(query, function (error, data3) {
+        
+                if (data3.length > 0) {
+                  let result = Object.values(JSON.parse(JSON.stringify(data3)));
+                  wss.clients.forEach(ws => {
+                    ws.send(JSON.stringify(result));
+                  })
+                }
+              });
+
+
+
+
+
+
+            });
+      
+      
+      
+          }
 
 
 
