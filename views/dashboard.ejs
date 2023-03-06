@@ -20,16 +20,24 @@
 
 <div class="text-center container w-25 border" id="user-rooms">
     <h3>Your Games</h3>
-    <form onsubmit="create('<%- JSON.stringify(uid) %>')">
-      <input type="username" id="roomname" placeholder="room name" />
-      <input type="submit"  id="creation" value="Create Game" class="btn btn-success rounded-pill"></input>
-    </form>
+    <button class="btn btn-success rounded-pill mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">
+      Create
+  </button>
+    <div class="collapse collapse-horizontal"  id="collapseExample">
+      <div class="card card-body">
+        <form onsubmit="create('<%- JSON.stringify(uid) %>')">
+          <input type="username" id="roomname" placeholder="room name" />
+          <input type="submit"  id="creation" value="Create Game" class="btn btn-success rounded-pill mt-2"></input>
+        </form>
+      </div>
+    </div>
     <table class="table" id="table2">
       
         
     </table>
     <h5></h5>
 </div>
+
 
 
 
@@ -50,18 +58,22 @@ ws.onmessage = function(event) {
   let tableData2 = document.getElementById("table2");
 
 
+  console.log(event.data)
   let data = JSON.parse(event.data);
   let data2 = JSON.parse(event.data);
   console.log("test1",data);
   console.log("test2",data2);
   let test = 0;
 
+  myroom = []
   for(i = 0; i < data.length; i++){
+    test = 0;
     console.log("testfor");
-    for(j = 0; j < JSON.parse(data[i]['room_members_id']).length; j++){
-      if(uid == JSON.parse(data[i]['room_members_id'])[j])
+    for(j = 0; j < data[i]['room_members_id'].length; j++){
+      if(uid == data[i]['room_members_id'][j])
       {
         test = 1;
+        break;
       }
     }
     if(test == 1){

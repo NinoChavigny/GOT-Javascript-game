@@ -29,12 +29,13 @@ form{
 }
 
 #rooms {
-    display:inline-block;
+    float: left;
     margin-top: 10em;
     margin-left: 15em;
 }
 
 #user-rooms {
-    display:inline-block;
-    margin-left: 30em;
+    float: right;
+    margin-top: 10em;
+    margin-right: 15em;
 }
