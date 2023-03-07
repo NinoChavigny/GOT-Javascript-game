@@ -112,4 +112,14 @@ router.get('/logout', (req ,res)=>{
     })
 })
 
+
+// route for logout
+router.get('/play', (req ,res)=>{
+    if(req.session.user){
+        res.render('game', {user: req.session.user, uid : req.session.uid})
+    }else{
+        res.send("Unauthorize User")
+    }
+})
+
 module.exports = router;

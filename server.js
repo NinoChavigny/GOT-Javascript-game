@@ -54,7 +54,7 @@ wss.on('connection', function connection(ws) {
 
     if (data.length > 0) {
       let result = Object.values(JSON.parse(JSON.stringify(data)));
-      console.log(result);
+      ///console.log(result);
       ws.send(JSON.stringify(result));
     }
   });
@@ -74,6 +74,7 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function message(data) {
     const cleandata = data.toString();
     const dataparsed = JSON.parse(cleandata)
+    console.log(dataparsed)
 
     var members = [];
     var roomid = ''; var uid = '';
@@ -91,24 +92,20 @@ wss.on('connection', function connection(ws) {
       uid = dataparsed[2];
 
 
-      query = `SELECT * FROM rooms`;
+      query = `SELECT * FROM rooms where room_id=${roomid}`;
+      queryfinal = `SELECT * FROM rooms`;
 
       database.query(query, function (error, data2) {
 
         if (data2.length > 0) {
-          let result = Object.values(JSON.parse(JSON.stringify(data2)));
-          for (i = 0; i < result.length; i++) {
-            if (result[i]["room_id"] == roomid) {
-              console.log("test result", JSON.parse(result[i]["room_members_id"]));
-              members = JSON.parse(result[i]["room_members_id"]);
-              console.log("members1", members);
+              let result = Object.values(JSON.parse(JSON.stringify(data2)));
+              ///console.log("test result", JSON.parse(result[0]["room_members_id"]));
+              members = JSON.parse(result[0]["room_members_id"]);
+              ///console.log("members1", members);
 
-            }
-          }
-        }
 
         members.push(uid);
-        console.log("members2", members);
+        ///console.log("members2", members);
 
         string_tab = JSON.stringify(members);
 
@@ -116,7 +113,7 @@ wss.on('connection', function connection(ws) {
         queryadd = `UPDATE rooms SET room_members_id = '${string_tab}' WHERE room_id = '${roomid}'`;
 
         database.query(queryadd);
-        database.query(query, function (error, data3) {
+        database.query(queryfinal, function (error, data3) {
 
           if (data3.length > 0) {
             let result = Object.values(JSON.parse(JSON.stringify(data3)));
@@ -127,6 +124,9 @@ wss.on('connection', function connection(ws) {
             })
           }
         });
+        }
+
+        
       });
 
 
@@ -138,42 +138,102 @@ wss.on('connection', function connection(ws) {
 
 
 
-          ///CREATING SYSTEM
-          if (dataparsed[0] == 'create') {
-            uid = dataparsed[1];
-            roomname = dataparsed[2];
+    ///CREATING SYSTEM
+    if (dataparsed[0] == 'create') {
+      uid = dataparsed[1];
+      roomname = dataparsed[2];
       
       
-            createquery = `INSERT INTO rooms (room_name, room_members_id) VALUES ('${roomname}', JSON_ARRAY('${uid}'))`;
-            database.query(createquery, function (error, data3) {
+      createquery = `INSERT INTO rooms (room_name, room_members_id) VALUES ('${roomname}', JSON_ARRAY('${uid}'))`;
+      database.query(createquery, function (error, data3) {
 
-              query = `SELECT * FROM rooms`;
-              database.query(query, function (error, data3) {
+        query = `SELECT * FROM rooms`;
+        database.query(query, function (error, data3) {
         
-                if (data3.length > 0) {
-                  let result = Object.values(JSON.parse(JSON.stringify(data3)));
-                  wss.clients.forEach(ws => {
-                    ws.send(JSON.stringify(result));
-                  })
-                }
-              });
-
-
-
-
-
-
-            });
-      
-      
-      
+          if (data3.length > 0) {
+            let result = Object.values(JSON.parse(JSON.stringify(data3)));
+            wss.clients.forEach(ws => {
+              ws.send(JSON.stringify(result));
+            })
           }
+        });
 
+      });};
+
+        ///LEAVING SYSTEM 
+    if (dataparsed[0] == 'leave') {
+
+      roomid = dataparsed[1];
+      uid = dataparsed[2];
+      temp = 0;
+
+
+      query = `SELECT * FROM rooms where room_id=${roomid}`;
+      queryfinal = `SELECT * FROM rooms`;
+
+      database.query(query, function (error, data2) {
+
+        if (data2.length > 0) {
+              let result = Object.values(JSON.parse(JSON.stringify(data2)));
+              members = JSON.parse(result[0]["room_members_id"]);
+              for(i = 0; i < members.length; i++) {
+                if(members[i] == uid){temp = i; break;}}
+              }
+
+        members.splice(temp, 1);
+
+        if(members.length != 0){
+        string_tab = JSON.stringify(members);
+
+
+        queryadd = `UPDATE rooms SET room_members_id = '${string_tab}' WHERE room_id = '${roomid}'`;
+
+        database.query(queryadd);
+        database.query(queryfinal, function (error, data3) {
+
+          if (data3.length > 0) {
+            let result = Object.values(JSON.parse(JSON.stringify(data3)));
+            wss.clients.forEach(ws => {
+              ws.send(JSON.stringify(result));
+              var current_members = [];
+              var new_members = [];
+            })
+          }
+        });
+
+
+        }
+        else{
+          querydel = `DELETE FROM rooms WHERE room_id = '${roomid}'`;
+
+        database.query(querydel);
+        database.query(queryfinal, function (error, data3) {
+
+          if (data3.length > 0) {
+            let result = Object.values(JSON.parse(JSON.stringify(data3)));
+            wss.clients.forEach(ws => {
+              ws.send(JSON.stringify(result));
+              var current_members = [];
+              var new_members = [];
+            })
+          }
+        });
+
+
+
+        }
+
+        
+        });
+
+        
+      };
+});
 
 
   });
-
-});
+      
+      
 
 
 
