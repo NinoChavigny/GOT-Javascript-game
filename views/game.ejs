@@ -4,13 +4,19 @@
 
 
 
-<%= gameid %>
+
+
+
+
+<button> <img src = "/assets/logos/tyrell_logo.svg" alt="My Happy SVG"/></button>
+
+<div class="basic class" id="main">
 
 
 
 
 
-
+</div>
 
 
 
@@ -25,12 +31,27 @@
 
 
 <script>
-const ws = new WebSocket("ws://localhost:3000");
 var uid = JSON.parse('<%- JSON.stringify(uid) %>');
-var gameid = JSON.parse('<%- JSON.stringify(gameid) %>');
-console.log(gameid)
+var roomid = JSON.parse('<%- JSON.stringify(roomid) %>');
+const ws = new WebSocket(`ws://localhost:3000/play?roomid=${roomid}`);
 
 ws.onopen = function() {
+  playing(uid, roomid)
+
+}
+
+ws.onmessage = function(event) {
+  console.log(event.data);
+
+  let data = JSON.parse(event.data);
+  if(data["msg"] == "infos"){
+
+    console.log(data)
+
+  }
+
+
+
 
 }
 
@@ -39,10 +60,9 @@ ws.onopen = function() {
 
 
 
-function playing(uid, gameid) {
-  console.log(uid, element.id);
+function playing(uid, roomid) {
 
-    const msg = `["playing","${gameid}","${uid}"]`;
+    const msg = `["playing","${roomid}","${uid}"]`;
 
     ws.send(msg);
 

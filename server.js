@@ -9,6 +9,7 @@ const WebSocket = require('ws');
 var database = require('./database');
 const req = require('express/lib/request');
 const { json } = require('express/lib/response');
+const { info } = require('console');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -45,9 +46,11 @@ app.use('/route', router);
 
 const wss = new WebSocket.Server({ server: server });
 
-wss.on('connection', function connection(ws) {
+wss.on('connection', function connection(ws, req) {
   console.log('A new client Connected!');
+  console.log(req.url);
 
+  if(req.url == "/"){
   query = `SELECT * FROM rooms`;
 
   database.query(query, function (error, data) {
@@ -57,7 +60,7 @@ wss.on('connection', function connection(ws) {
       ///console.log(result);
       ws.send(JSON.stringify(result));
     }
-  });
+  }); }
 
 
 
@@ -102,17 +105,20 @@ wss.on('connection', function connection(ws) {
               ///console.log("test result", JSON.parse(result[0]["room_members_id"]));
               members = JSON.parse(result[0]["room_members_id"]);
               ///console.log("members1", members);
+        
+          if(members.length < 4){
+            members.push(uid);
+            string_tab = JSON.stringify(members);
 
+            if(members.length == 4){
+              querystart = `UPDATE rooms SET room_members_id = '${string_tab}', game_info = '{"started": 1}' WHERE room_id = '${roomid}'`
+              database.query(querystart);
+              }
+            else{
+              queryadd = `UPDATE rooms SET room_members_id = '${string_tab}' WHERE room_id = '${roomid}'`;
+            database.query(queryadd);
+            }}
 
-        members.push(uid);
-        ///console.log("members2", members);
-
-        string_tab = JSON.stringify(members);
-
-
-        queryadd = `UPDATE rooms SET room_members_id = '${string_tab}' WHERE room_id = '${roomid}'`;
-
-        database.query(queryadd);
         database.query(queryfinal, function (error, data3) {
 
           if (data3.length > 0) {
@@ -144,7 +150,7 @@ wss.on('connection', function connection(ws) {
       roomname = dataparsed[2];
       
       
-      createquery = `INSERT INTO rooms (room_name, room_members_id) VALUES ('${roomname}', JSON_ARRAY('${uid}'))`;
+      createquery = `INSERT INTO rooms (room_name, room_members_id, game_info) VALUES ('${roomname}', JSON_ARRAY('${uid}'), '{"started": 0}')`;
       database.query(createquery, function (error, data3) {
 
         query = `SELECT * FROM rooms`;
@@ -160,7 +166,7 @@ wss.on('connection', function connection(ws) {
 
       });};
 
-        ///LEAVING SYSTEM 
+    ///LEAVING SYSTEM 
     if (dataparsed[0] == 'leave') {
 
       roomid = dataparsed[1];
@@ -228,6 +234,68 @@ wss.on('connection', function connection(ws) {
 
         
       };
+
+    ///start playing
+    if (dataparsed[0] == 'playing') {
+
+        uid = dataparsed[2];
+        roomid = dataparsed[1];
+
+        queryplaying = `SELECT * FROM rooms where room_id=${roomid}`;
+
+        database.query(queryplaying, function (error, data) {
+
+          if (data.length > 0) {
+            let result = Object.values(JSON.parse(JSON.stringify(data)));
+            members = JSON.parse(result[0]["room_members_id"]);
+            infos = JSON.parse(result[0]["game_info"]);
+            data_send = {"msg": "infos", "members": members.length, "info": infos}
+
+            ws.send(JSON.stringify(data_send));
+          }
+
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+    ///CONECTION WEBSOCKET ID SETUP
+    if (dataparsed[0] == 'connection') {
+
+      uid = dataparsed[1];
+      
+      ws.id = uid;
+  }
+
+
+
+
+
+
+
+
+
+
+
 });
 
 
