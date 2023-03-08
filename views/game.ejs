@@ -4,7 +4,7 @@
 
 
 
-
+<%= gameid %>
 
 
 
@@ -27,6 +27,8 @@
 <script>
 const ws = new WebSocket("ws://localhost:3000");
 var uid = JSON.parse('<%- JSON.stringify(uid) %>');
+var gameid = JSON.parse('<%- JSON.stringify(gameid) %>');
+console.log(gameid)
 
 ws.onopen = function() {
 
@@ -37,7 +39,14 @@ ws.onopen = function() {
 
 
 
+function playing(uid, gameid) {
+  console.log(uid, element.id);
 
+    const msg = `["playing","${gameid}","${uid}"]`;
+
+    ws.send(msg);
+
+}
 
 
 

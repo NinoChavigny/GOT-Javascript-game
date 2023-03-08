@@ -5,7 +5,6 @@ var database = require('./database');
 
 /// login user
 router.post('/login', (req, res)=>{
-
     var user_email_address = req.body.email;
 
     var user_password = req.body.password;
@@ -113,10 +112,11 @@ router.get('/logout', (req ,res)=>{
 })
 
 
-// route for logout
+// route for play
 router.get('/play', (req ,res)=>{
     if(req.session.user){
-        res.render('game', {user: req.session.user, uid : req.session.uid})
+        req.session.gameid = req.query.gameid;
+        res.render('game', {user: req.session.user, uid : req.session.uid, gameid : req.session.gameid})
     }else{
         res.send("Unauthorize User")
     }

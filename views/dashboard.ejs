@@ -154,7 +154,10 @@ for(j = 0; j < data2.length; j++){
             <div id="flush-collapseOne${data2[j]['room_id']}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">
               <button type="submit" onclick="leave(this, ${uid})" id="${data2[j]['room_id']}" class="btn btn-danger rounded-pill">Leave</button>
-              <form action="/route/play">
+              <form action="/route/play" method="GET">
+                <div class="form-group">
+                  <input type="hidden" name="gameid" value="${data2[j]['room_id']}" />
+                </div>
                 <button type="submit" onclick="" id="play${data2[j]['room_id']}" class="btn btn-success rounded-pill">Play</button>
               </form>
               
