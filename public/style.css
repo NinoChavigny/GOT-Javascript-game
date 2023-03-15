@@ -40,6 +40,8 @@ form{
     margin-right: 15em;
 }
 
+#
+
 .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -49,3 +51,18 @@ form{
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
   }
+
+#main { 
+    float:left;
+    margin-top: 20em;
+    margin-left: 28em;
+
+  }
+
+#families + #families {
+    margin-left: 100px;
+  }
+
+#families{
+    align-content: center;
+}

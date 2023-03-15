@@ -116,6 +116,7 @@ router.get('/logout', (req ,res)=>{
 router.get('/play', (req ,res)=>{
     if(req.session.user){
         req.session.roomid = req.query.roomid;
+        console.log(req.session.roomid)
         res.render('game', {user: req.session.user, uid : req.session.uid, roomid : req.session.roomid})
     }else{
         res.send("Unauthorize User")
