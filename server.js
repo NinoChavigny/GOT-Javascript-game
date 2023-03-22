@@ -9,7 +9,7 @@ const WebSocket = require("ws");
 var database = require("./database");
 const req = require("express/lib/request");
 const { json } = require("express/lib/response");
-const { info } = require("console");
+const { info, count } = require("console");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -193,22 +193,36 @@ wss.on("connection", function connection(ws, req) {
       database.query(queryplaying, function (error, data) {
         if (data.length > 0) {
           let result = Object.values(JSON.parse(JSON.stringify(data)));
-          members = JSON.parse(result[0]["room_members_id"]);
           infos = JSON.parse(result[0]["game_info"]);
-          data_send = { msg: "infos",  info: infos };
+          data_send = { msg: "infos", info: infos };
 
           ws.send(JSON.stringify(data_send));
         }
       });
     }
 
-    ///CONECTION WEBSOCKET ID SETUP
-    if (dataparsed[0] == "connection") {
-      uid = dataparsed[1];
+    ///family choice
+    if (dataparsed[0] == "family_choice") {
+      new_info = dataparsed[1];
+      roomid = dataparsed[2];
 
-      ws.id = uid;
-    }
-  });
+      keys = Object.keys(data["info"]["families_choices"]);
+      count = 0
+      for (i = 0; i < keys.length; i++) {
+        if (new_info[keys[i]]) {
+
+        }
+      }
+
+      queryfamily = `UPDATE rooms SET game_info = '${string_tab}' WHERE room_id = '${roomid}'`;
+
+      ///CONECTION WEBSOCKET ID SETUP
+      if (dataparsed[0] == "connection") {
+        uid = dataparsed[1];
+
+        ws.id = uid;
+      }
+    });
 });
 
 server.listen(port, () => {

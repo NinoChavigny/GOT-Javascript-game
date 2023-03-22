@@ -1,42 +1,44 @@
-
 <%- include('header') -%>
 
 
-<div class="text-center container w-25 border border-0 top-100 start-50 tertiary-bg" id="welcome">
+  <div class="text-center container w-25 border border-0 top-100 start-50 tertiary-bg" id="welcome">
     <h3>Welcome to Express Dashboard</h3>
-    <h5><%= locals.user ? user : "User" %></h5>
+    <h5>
+      <%= locals.user ? user : "User" %>
+    </h5>
     <a href="/route/logout">Logout</a>
-</div>
+  </div>
 
-<div class="text-center container w-25 border" id="rooms">
+  <div class="text-center container w-25 border" id="rooms">
     <h3>All Games</h3>
 
     <table class="table" id="table1">
-      
-        
+
+
     </table>
     <h5></h5>
-</div>
+  </div>
 
-<div class="text-center container w-25 border" id="user-rooms">
+  <div class="text-center container w-25 border" id="user-rooms">
     <h3>Your Games</h3>
-    <button class="btn btn-info rounded-pill mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">
+    <button class="btn btn-info rounded-pill mb-2" type="button" data-bs-toggle="collapse"
+      data-bs-target="#collapseExample">
       Create
-  </button>
-    <div class="collapse collapse-horizontal"  id="collapseExample">
+    </button>
+    <div class="collapse collapse-horizontal" id="collapseExample">
       <div class="card card-body">
         <form onsubmit="create('<%- JSON.stringify(uid) %>')">
           <input type="username" id="roomname" placeholder="room name" />
-          <input type="submit"  id="creation" value="Create Game" class="btn btn-info rounded-pill mt-2"></input>
+          <input type="submit" id="creation" value="Create Game" class="btn btn-info rounded-pill mt-2"></input>
         </form>
       </div>
     </div>
     <table class="table" id="table2">
-      
-        
+
+
     </table>
     <h5></h5>
-</div>
+  </div>
 
 
 
@@ -45,54 +47,53 @@
 
 
 
-<script>
-const ws = new WebSocket("ws://localhost:3000");
-var uid = JSON.parse('<%- JSON.stringify(uid) %>');
+  <script>
+    const ws = new WebSocket("ws://localhost:3000");
+    var uid = JSON.parse('<%- JSON.stringify(uid) %>');
 
-ws.onopen = function() {
-  connection(uid);
+    ws.onopen = function () {
+      connection(uid);
 
-}
-
-ws.onmessage = function(event) {
-  let tableData = document.getElementById("table1");
-  let tableData2 = document.getElementById("table2");
-
-
-  console.log(event.data)
-  let data = JSON.parse(event.data);
-  let data2 = JSON.parse(event.data);
-  console.log("test1",data);
-  console.log("test2",data2);
-  let test = 0;
-
-  myroom = []
-  for(i = 0; i < data.length; i++){
-    test = 0;
-    console.log("testfor");
-    for(j = 0; j < data[i]['room_members_id'].length; j++){
-      if(uid == data[i]['room_members_id'][j])
-      {
-        test = 1;
-        break;
-      }
     }
-    if(test == 1){
-      delete data[i];
-    }
-    else{
-      if(test == 0)
-      {
-        delete data2[i];
+
+    ws.onmessage = function (event) {
+      let tableData = document.getElementById("table1");
+      let tableData2 = document.getElementById("table2");
+
+
+      console.log(event.data)
+      let data = JSON.parse(event.data);
+      let data2 = JSON.parse(event.data);
+      console.log("test1", data);
+      console.log("test2", data2);
+      let test = 0;
+
+      myroom = []
+      for (i = 0; i < data.length; i++) {
+        test = 0;
+        console.log("testfor");
+        for (j = 0; j < data[i]['room_members_id'].length; j++) {
+          if (uid == data[i]['room_members_id'][j]) {
+            test = 1;
+            break;
+          }
+        }
+        if (test == 1) {
+          delete data[i];
+        }
+        else {
+          if (test == 0) {
+            delete data2[i];
+          }
+        }
       }
-  }}
 
-  ///console.log(data);
+      ///console.log(data);
 
-  //set header of table
+      //set header of table
 
 
-let table = `
+      let table = `
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -103,21 +104,22 @@ let table = `
   </thead>
   <tbody>
   `;
-  //create//append rows
-for(i = 0; i < data.length; i++){
-  if(data[i] != null){
-    table = table +
-    `<tr>
+      //create//append rows
+      for (i = 0; i < data.length; i++) {
+        if (data[i] != null) {
+          table = table +
+            `<tr>
       <th scope="row">${data[i]['room_id']}</th>
       <td>${data[i]['room_name']}</td>
       <td>${JSON.parse(data[i]['room_members_id']).length}/4</td>
       <td><button type="submit" onclick="join(this, ${uid})" id="${data[i]['room_id']}" class="btn btn-info rounded-pill">Join</button></td>
     </tr>`
-}}
-//close off table
-table = table +
-  `</tbody>`
-  ;
+        }
+      }
+      //close off table
+      table = table +
+        `</tbody>`
+        ;
 
 
 
@@ -125,7 +127,7 @@ table = table +
 
 
 
-  let table2 = `
+      let table2 = `
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -136,11 +138,11 @@ table = table +
   </thead>
   <tbody>
   `;
-  //create//append rows
-for(j = 0; j < data2.length; j++){
-  if(data2[j] != null){
-    table2 = table2 +
-    `<tr>
+      //create//append rows
+      for (j = 0; j < data2.length; j++) {
+        if (data2[j] != null) {
+          table2 = table2 +
+            `<tr>
       <th scope="row">${data2[j]['room_id']}</th>
       <td>${data2[j]['room_name']}</td>
       <td>${JSON.parse(data2[j]['room_members_id']).length}/4</td>
@@ -158,6 +160,7 @@ for(j = 0; j < data2.length; j++){
               <form action="/route/play" method="GET">
                 <div class="form-group">
                   <input type="hidden" name="roomid" value="${data2[j]['room_id']}" />
+                  <input type="hidden" name="uid" value="${uid}" />
                 </div>
                 <button type="submit" onclick="" id="play${data2[j]['room_id']}" class="btn btn-success rounded-pill">Play</button>
               </form>
@@ -177,57 +180,58 @@ for(j = 0; j < data2.length; j++){
         
         </td>
     </tr>`
-}}
-//close off table
-table2 = table2 +
-  `</tbody>`
-  ;
+        }
+      }
+      //close off table
+      table2 = table2 +
+        `</tbody>`
+        ;
 
 
-tableData.innerHTML = table;
-tableData2.innerHTML = table2;
-  
-
-};
-
-///var test = document.getElementById("bouton1");
+      tableData.innerHTML = table;
+      tableData2.innerHTML = table2;
 
 
-function join(element, uid) {
+    };
 
-  const msg = `["join","${element.id}","${uid}"]`;
-
-  ws.send(msg);
-  
-}
-
-function create(uid) {
-  roomname = document.getElementById('roomname').value;
-
-const msg = `["create","${uid}", "${roomname}"]`;
-
-ws.send(msg);
-
-}
-
-function leave(element, uid) {
-  console.log(uid, element.id);
-
-const msg = `["leave","${element.id}","${uid}"]`;
-
-ws.send(msg);
-
-}
-
-function connection(uid) {
-
-const msg = `["connection", "${uid}"]`;
-
-ws.send(msg);
-
-}
-
-</script>
+    ///var test = document.getElementById("bouton1");
 
 
-<%- include('footer') -%>
+    function join(element, uid) {
+
+      const msg = `["join","${element.id}","${uid}"]`;
+
+      ws.send(msg);
+
+    }
+
+    function create(uid) {
+      roomname = document.getElementById('roomname').value;
+
+      const msg = `["create","${uid}", "${roomname}"]`;
+
+      ws.send(msg);
+
+    }
+
+    function leave(element, uid) {
+      console.log(uid, element.id);
+
+      const msg = `["leave","${element.id}","${uid}"]`;
+
+      ws.send(msg);
+
+    }
+
+    function connection(uid) {
+
+      const msg = `["connection", "${uid}"]`;
+
+      ws.send(msg);
+
+    }
+
+  </script>
+
+
+  <%- include('footer') -%>
