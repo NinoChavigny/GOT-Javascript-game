@@ -203,26 +203,64 @@ wss.on("connection", function connection(ws, req) {
 
     ///family choice
     if (dataparsed[0] == "family_choice") {
-      new_info = dataparsed[1];
-      roomid = dataparsed[2];
+      family = dataparsed[1];
+      uid = dataparsed[2];
+      roomid = dataparsed[3];
 
-      keys = Object.keys(data["info"]["families_choices"]);
-      count = 0
-      for (i = 0; i < keys.length; i++) {
-        if (new_info[keys[i]]) {
+      new_info = {};
+
+      query = `SELECT * FROM rooms where room_id=${roomid}`;
+
+      database.query(query, function (error, data) {
+        if (data.length > 0) {
+          let result = Object.values(JSON.parse(JSON.stringify(data)));
+          infos = JSON.parse(result[0]["game_info"]);
+          new_info = { info: infos };
+        }
+
+
+
+        keys = Object.keys(new_info["info"]["families_choices"]);
+        new_info["info"]["families_choices"][family] = uid
+
+
+        var count = 0;
+        for (i = 0; i < keys.length; i++) {
+          if (new_info[keys[i]] != 0) {
+            count += 1
+          }
+        }
+
+        if (count == 4) {
+          new_info["started"] = 1
 
         }
-      }
 
-      queryfamily = `UPDATE rooms SET game_info = '${string_tab}' WHERE room_id = '${roomid}'`;
+        queryfamily = `UPDATE rooms SET game_info = '${JSON.stringify(new_info['info'])}' WHERE room_id = '${roomid}'`;
+        database.query(queryfamily);
 
-      ///CONECTION WEBSOCKET ID SETUP
-      if (dataparsed[0] == "connection") {
-        uid = dataparsed[1];
+        queryplaying = `SELECT * FROM rooms where room_id=${roomid}`;
 
-        ws.id = uid;
-      }
-    });
+        database.query(queryplaying, function (error, data) {
+          if (data.length > 0) {
+            let result = Object.values(JSON.parse(JSON.stringify(data)));
+            infos = JSON.parse(result[0]["game_info"]);
+            data_send = { msg: "infos", info: infos };
+
+            ws.send(JSON.stringify(data_send));
+
+          }
+        });
+
+        ///CONNECTION WEBSOCKET ID SETUP
+        if (dataparsed[0] == "connection") {
+          uid = dataparsed[1];
+
+          ws.id = uid;
+        }
+      });
+    }
+  });
 });
 
 server.listen(port, () => {
