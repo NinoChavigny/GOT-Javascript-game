@@ -61,6 +61,7 @@ wss.on("connection", function connection(ws, req) {
     const dataparsed = JSON.parse(cleandata);
     console.log(dataparsed);
 
+
     var members = [];
     var roomid = "";
     var uid = "";
@@ -187,7 +188,6 @@ wss.on("connection", function connection(ws, req) {
     if (dataparsed[0] == "playing") {
       uid = dataparsed[2];
       roomid = dataparsed[1];
-
       queryplaying = `SELECT * FROM rooms where room_id=${roomid}`;
 
       database.query(queryplaying, function (error, data) {
@@ -200,6 +200,7 @@ wss.on("connection", function connection(ws, req) {
         }
       });
     }
+
 
     ///family choice
     if (dataparsed[0] == "family_choice") {
@@ -221,7 +222,9 @@ wss.on("connection", function connection(ws, req) {
 
 
         keys = Object.keys(new_info["info"]["families_choices"]);
-        new_info["info"]["families_choices"][family] = uid
+
+        new_info["info"]["families_choices"][family] = parseInt(uid)
+        console.log(new_info)
 
 
         var count = 0;
@@ -251,14 +254,54 @@ wss.on("connection", function connection(ws, req) {
 
           }
         });
+      });
+    }
 
-        ///CONNECTION WEBSOCKET ID SETUP
-        if (dataparsed[0] == "connection") {
-          uid = dataparsed[1];
 
-          ws.id = uid;
+
+    ///CONNECTION WEBSOCKET ID SETUP
+    if (dataparsed[0] == "connection") {
+      uid = dataparsed[1];
+
+      ws.id = uid;
+    }
+
+
+
+    ///CHATBOX MESSAGE
+    if (dataparsed[0] == "chat_message") {
+      roomid = dataparsed[1];
+      chat_message = dataparsed[2];
+      uid = dataparsed[3];
+
+
+
+
+
+
+      query = `SELECT room_members_id FROM rooms where room_id=${roomid}`;
+
+      database.query(query, function (error, data) {
+        if (data.length > 0) {
+          let result = Object.values(JSON.parse(JSON.stringify(data)));
+          room_members_id = JSON.parse(result[0]['room_members_id']);
+          data_send = { msg: "message", message: chat_message };
+
+          wss.clients.forEach(function each(client) {
+            if (room_members_id.some(item => item === uid)) {
+              client.send(JSON.stringify(data_send));
+            }
+          });
+
+
         }
       });
+
+
+
+
+
+
     }
   });
 });

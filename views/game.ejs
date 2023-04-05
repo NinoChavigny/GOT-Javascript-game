@@ -1,8 +1,56 @@
 <%- include('header') -%>
-
+  <nav class="navbar navbar-expand-lg bg-primary" id="navbar" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Menu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Influences</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" id="Chat" onclick="chat()">Chat</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Cersei ~ When you play the game of thrones, you win or you die.
+        </span>
+      </div>
+    </div>
+  </nav>
   <div class="basic class" id="main"></div>
 
+
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="180000">
+      <div class="toast-header">
+        <img src="/assets/chatbox.svg" width="20px" class="rounded me-2" alt="...">
+        <strong class="me-auto">Chatbox</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        <pre id="messages" style="width: 90%; margin-left: 5%; height: 200px; overflow: scroll">
+          </pre>
+        <input type="text" id="messageBox" placeholder="Type your message here"
+          style="display: block; width: 90%; margin-bottom: 10px; margin-left: 5%; padding: 10px;" />
+        <button id="send" title="Send Message!" style="width: 90%; margin-left: 5%; height: 30px;">
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    const sendBtn = document.querySelector('#send');
+    const messages = document.querySelector('#messages');
+    const messageBox = document.querySelector('#messageBox');
     let main = document.getElementById("main");
     var uid = JSON.parse("<%- JSON.stringify(uid) %>");
     var roomid = JSON.parse("<%- roomid %>");
@@ -14,6 +62,7 @@
 
     ws.onmessage = function (event) {
       div = "";
+      navbar = "";
       console.log(event.data);
 
       let data = JSON.parse(event.data);
@@ -23,8 +72,9 @@
         if (data["info"]["started"] == 0) {
           values_arr = Object.values(data["info"]["families_choices"]);
 
-          if (values_arr.includes(uid)) {
-            div += `map et autre`
+          if (values_arr.some(item => item === uid)) {
+            main.innerHTML = `<img src=/assets/map.svg alt=FamSVG />`;
+            navbar.innerHTML = navbar;
 
           }
           else {
@@ -37,12 +87,19 @@
                         </button>`;
               }
             }
+            main.innerHTML = div;
           }
+
+        }
+        else {
 
         }
       }
 
-      main.innerHTML = div;
+      if (data['msg'] == 'message') {
+        showMessage(`${data['message']}`);
+      }
+
     };
 
     function playing(uid, roomid) {
@@ -57,6 +114,31 @@
       const msg = `["family_choice","${family}", "${uid}", "${roomid}"]`;
 
       ws.send(msg);
+    }
+
+    function chat() {
+      const ChatTrigger = document.getElementById('Chat')
+      const toastLiveExample = document.getElementById('liveToast')
+
+      const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+      toastBootstrap.show()
+    }
+
+    function showMessage(message) {
+      messages.textContent += `\n${message}`;
+      messages.scrollTop = messages.scrollHeight;
+      messageBox.value = '';
+    }
+
+    sendBtn.onclick = function () {
+
+      const msg = `["chat_message","${roomid}", "${messageBox.value}", "${uid}"]`;
+
+      if (ws) {
+        ws.send(msg);
+      } else {
+        alert("ERROR: Not connected... refresh to try again!");
+      }
     }
   </script>
 
