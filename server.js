@@ -224,7 +224,7 @@ wss.on("connection", function connection(ws, req) {
         keys = Object.keys(new_info["info"]["families_choices"]);
 
         new_info["info"]["families_choices"][family] = parseInt(uid)
-        console.log(new_info)
+
 
 
         var count = 0;
@@ -279,13 +279,23 @@ wss.on("connection", function connection(ws, req) {
 
 
 
-      query = `SELECT room_members_id FROM rooms where room_id=${roomid}`;
+      query = `SELECT room_members_id, game_info FROM rooms where room_id=${roomid}`;
 
       database.query(query, function (error, data) {
         if (data.length > 0) {
           let result = Object.values(JSON.parse(JSON.stringify(data)));
           room_members_id = JSON.parse(result[0]['room_members_id']);
-          data_send = { msg: "message", message: chat_message };
+          infos = JSON.parse(result[0]['game_info']);
+          family_name = ''
+
+          keys = Object.keys(infos['families_choices'])
+
+
+          for (const key of keys) {
+            if (infos['families_choices'][key] == uid) { family_name = key }
+          }
+
+          data_send = { msg: "message", message: chat_message, chat_name: family_name };
 
           wss.clients.forEach(function each(client) {
             if (room_members_id.some(item => item === uid)) {

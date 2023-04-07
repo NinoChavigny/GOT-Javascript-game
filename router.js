@@ -111,10 +111,22 @@ router.get('/play', (req, res) => {
     if (req.session.user && req.session.uid == req.query.uid) {
         req.session.roomid = req.query.roomid;
         console.log(req.session.roomid)
-        res.render('game', { user: req.session.user, uid: req.session.uid, roomid: req.session.roomid })
+        res.render('game', { title: 'Game', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid })
     } else {
         res.send("Unauthorize User")
     }
+})
+
+router.get('/influences', (req, res) => {
+    if (req.session.user && req.session.uid) {
+        res.render('influences', { title: 'Influence', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid })
+    } else {
+        res.send("Unauthorize User")
+    }
+
+
+
+
 })
 
 module.exports = router;
