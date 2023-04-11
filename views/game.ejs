@@ -47,31 +47,70 @@
 
         if (data["msg"] == "infos") {
           keys = Object.keys(data["info"]["families_choices"]);
+          room_type = data["room_type"]
 
           if (data["info"]["started"] == 0) {
             values_arr = Object.values(data["info"]["families_choices"]);
 
             if (values_arr.some(item => item === uid)) {
               main.innerHTML = `<img src=/assets/map.svg alt=FamSVG />`;
-              navbar.innerHTML = navbar;
 
             }
             else {
               div += `<p class="text-center">Choose your family !</p>`
-              for (i = 0; i < keys.length; i++) {
-                if (data["info"]["families_choices"][keys[i]] == 0) {
-                  div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
+
+              if (room_type == 3) {
+                for (i = 0; i < keys.length; i++) {
+                  if (data["info"]["families_choices"][keys[i]] == 0
+                    & keys[i] != "tyrell"
+                    & keys[i] != "martell"
+                    & keys[i] != "greyjoy") {
+                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
                           <div class="familyname">${keys[i]}</div>
                           <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
                         </button>`;
+                  }
                 }
               }
+              if (room_type == 4) {
+                for (i = 0; i < keys.length; i++) {
+                  if (data["info"]["families_choices"][keys[i]] == 0
+                    & keys[i] != "tyrell"
+                    & keys[i] != "martell") {
+                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
+                          <div class="familyname">${keys[i]}</div>
+                          <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
+                        </button>`;
+                  }
+                }
+              }
+              if (room_type == 5) {
+                for (i = 0; i < keys.length; i++) {
+                  if (data["info"]["families_choices"][keys[i]] == 0 & keys[i] != "martell") {
+                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
+                          <div class="familyname">${keys[i]}</div>
+                          <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
+                        </button>`;
+                  }
+                }
+              }
+              if (room_type == 6) {
+                for (i = 0; i < keys.length; i++) {
+                  if (data["info"]["families_choices"][keys[i]] == 0) {
+                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
+                          <div class="familyname">${keys[i]}</div>
+                          <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
+                        </button>`;
+                  }
+                }
+              }
+
               main.innerHTML = div;
             }
 
           }
           else {
-
+            main.innerHTML = `<img src=/assets/map.svg alt=FamSVG />`;
           }
         }
 

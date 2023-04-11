@@ -123,10 +123,16 @@ router.get('/influences', (req, res) => {
     } else {
         res.send("Unauthorize User")
     }
-
-
-
-
 })
+
+router.get('/home', (req, res) => {
+    if (req.session.user) {
+        res.render('game', { title: 'Game', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid })
+    } else {
+        res.send("Unauthorize User")
+    }
+})
+
+
 
 module.exports = router;

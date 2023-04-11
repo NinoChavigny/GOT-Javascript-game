@@ -15,6 +15,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
 
+//const for the start of a game
+const influences = require("./influences.json");
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -112,8 +115,9 @@ wss.on("connection", function connection(ws, req) {
     if (dataparsed[0] == "create") {
       uid = dataparsed[1];
       roomname = dataparsed[2];
+      roomtype = dataparsed[3];
 
-      createquery = `INSERT INTO rooms (room_name, room_members_id) VALUES ('${roomname}', JSON_ARRAY('${uid}'))`;
+      createquery = `INSERT INTO rooms (room_name, room_members_id, room_type) VALUES ('${roomname}', JSON_ARRAY('${uid}'), '${roomtype}')`;
       database.query(createquery, function (error, data3) {
         query = `SELECT * FROM rooms`;
         database.query(query, function (error, data3) {
@@ -194,7 +198,8 @@ wss.on("connection", function connection(ws, req) {
         if (data.length > 0) {
           let result = Object.values(JSON.parse(JSON.stringify(data)));
           infos = JSON.parse(result[0]["game_info"]);
-          data_send = { msg: "infos", info: infos };
+          roomtype = result[0]["room_type"]
+          data_send = { msg: "infos", info: infos, room_type: roomtype };
 
           ws.send(JSON.stringify(data_send));
         }
@@ -207,6 +212,7 @@ wss.on("connection", function connection(ws, req) {
       family = dataparsed[1];
       uid = dataparsed[2];
       roomid = dataparsed[3];
+      roomtype = 0
 
       new_info = {};
 
@@ -216,6 +222,7 @@ wss.on("connection", function connection(ws, req) {
         if (data.length > 0) {
           let result = Object.values(JSON.parse(JSON.stringify(data)));
           infos = JSON.parse(result[0]["game_info"]);
+          roomtype = result[0]["room_type"]
           new_info = { info: infos };
         }
 
@@ -227,15 +234,19 @@ wss.on("connection", function connection(ws, req) {
 
 
 
-        var count = 0;
+        nombre = 0;
         for (i = 0; i < keys.length; i++) {
-          if (new_info[keys[i]] != 0) {
-            count += 1
+          if (new_info["info"]["families_choices"][keys[i]] != 0) {
+            nombre += 1
           }
         }
 
-        if (count == 4) {
-          new_info["started"] = 1
+        if (nombre == roomtype) {
+          new_info["info"]["started"] = 1
+          new_info["info"]["inf_throne"] = influences["throne"][`${roomtype}p`]
+          new_info["info"]["inf_fief"] = influences["fief"][`${roomtype}p`]
+          new_info["info"]["inf_king"] = influences["king"][`${roomtype}p`]
+
 
         }
 

@@ -54,3 +54,11 @@ form {
 #families {
     align-content: center;
 }
+
+#svg129451 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -400px;
+}

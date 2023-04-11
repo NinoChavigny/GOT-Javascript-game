@@ -28,7 +28,10 @@
     <div class="collapse collapse-horizontal" id="collapseExample">
       <div class="card card-body">
         <form onsubmit="create('<%- JSON.stringify(uid) %>')">
-          <input type="username" id="roomname" placeholder="room name" />
+          <input type="username" id="roomname" placeholder="room name"
+            style="display: block; width: 90%; margin-bottom: 10px; margin-left: 5%; padding: 10px;" />
+          <input type="int" id="roomtype" placeholder="Enter members number: 3, 4, 5 or 6"
+            style="display: block; width: 90%; margin-bottom: 10px; margin-left: 5%; padding: 10px;" />
           <input type="submit" id="creation" value="Create Game" class="btn btn-info rounded-pill mt-2"></input>
         </form>
       </div>
@@ -64,14 +67,12 @@
       console.log(event.data)
       let data = JSON.parse(event.data);
       let data2 = JSON.parse(event.data);
-      console.log("test1", data);
-      console.log("test2", data2);
+
       let test = 0;
 
       myroom = []
       for (i = 0; i < data.length; i++) {
         test = 0;
-        console.log("testfor");
         for (j = 0; j < data[i]['room_members_id'].length; j++) {
           if (uid == data[i]['room_members_id'][j]) {
             test = 1;
@@ -89,6 +90,8 @@
       }
 
       ///console.log(data);
+      console.log("test1", data);
+      console.log("test2", data2);
 
       //set header of table
 
@@ -111,7 +114,7 @@
             `<tr>
       <th scope="row">${data[i]['room_id']}</th>
       <td>${data[i]['room_name']}</td>
-      <td>${JSON.parse(data[i]['room_members_id']).length}/4</td>
+      <td>${JSON.parse(data[i]['room_members_id']).length}/${data[i]['room_type']}</td>
       <td><button type="submit" onclick="join(this, ${uid})" id="${data[i]['room_id']}" class="btn btn-info rounded-pill">Join</button></td>
     </tr>`
         }
@@ -145,7 +148,7 @@
             `<tr>
       <th scope="row">${data2[j]['room_id']}</th>
       <td>${data2[j]['room_name']}</td>
-      <td>${JSON.parse(data2[j]['room_members_id']).length}/4</td>
+      <td>${JSON.parse(data2[j]['room_members_id']).length}/${data2[j]['room_type']}</td>
       <td>
         <div class="accordion accordion-flush" id="accordionFlushExample">
           <div class="accordion-item">
@@ -207,8 +210,9 @@
 
     function create(uid) {
       roomname = document.getElementById('roomname').value;
+      roomtype = document.getElementById('roomtype').value;
 
-      const msg = `["create","${uid}", "${roomname}"]`;
+      const msg = `["create","${uid}", "${roomname}", "${roomtype}"]`;
 
       ws.send(msg);
 

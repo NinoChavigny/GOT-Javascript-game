@@ -1,0 +1,20 @@
+{
+	"throne":{
+			"6p": ["baratheon", "lannister", "stark", "martell", "greyjoy", "tyrell"],
+			"5p": ["baratheon", "lannister", "stark", "greyjoy", "tyrell"],
+			"4p": ["baratheon", "lannister", "stark", "greyjoy"],
+			"3p": ["baratheon", "lannister", "stark"]
+		},
+	"fief":{
+			"6p": ["greyjoy", "tyrell", "martell", "stark", "baratheon", "lannister"],
+			"5p": ["greyjoy", "tyrell", "stark", "baratheon", "lannister"],
+			"4p": ["greyjoy", "stark", "baratheon", "lannister"],
+			"3p": ["stark", "baratheon", "lannister"]
+		},
+	"king":{
+			"6p": ["lannister", "stark", "martell", "baratheon", "tyrell", "greyjoy"],
+			"5p": ["lannister", "stark", "baratheon", "tyrell", "greyjoy"],
+			"4p": ["lannister", "stark", "baratheon", "greyjoy"],
+			"3p": ["lannister", "stark", "baratheon"]
+		}
+}
