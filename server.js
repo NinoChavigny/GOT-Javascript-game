@@ -7,9 +7,6 @@ const session = require("express-session");
 const { v4: uuidv4 } = require("uuid");
 const WebSocket = require("ws");
 var database = require("./database");
-const req = require("express/lib/request");
-const { json } = require("express/lib/response");
-const { info, count } = require("console");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,6 +14,7 @@ const server = http.createServer(app);
 
 //const for the start of a game
 const influences = require("./influences.json");
+const init_army = require("./init_army.json");
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -45,7 +43,7 @@ const wss = new WebSocket.Server({ server: server });
 
 wss.on("connection", function connection(ws, req) {
   console.log("A new client Connected!");
-  console.log(req.url);
+  console.log(req.url[1]);
 
   if (req.url == "/") {
     query = `SELECT * FROM rooms`;
@@ -58,12 +56,12 @@ wss.on("connection", function connection(ws, req) {
       }
     });
   }
+  else { ws.id = req.url[1] }
 
   ws.on("message", function message(data) {
     const cleandata = data.toString();
     const dataparsed = JSON.parse(cleandata);
     console.log(dataparsed);
-
 
     var members = [];
     var roomid = "";
@@ -87,14 +85,8 @@ wss.on("connection", function connection(ws, req) {
           if (members.length < 4) {
             members.push(uid);
             string_tab = JSON.stringify(members);
-
-            if (members.length == 4) {
-              querystart = `UPDATE rooms SET room_members_id = '${string_tab}', game_info = '{"started": 1}' WHERE room_id = '${roomid}'`;
-              database.query(querystart);
-            } else {
-              queryadd = `UPDATE rooms SET room_members_id = '${string_tab}' WHERE room_id = '${roomid}'`;
-              database.query(queryadd);
-            }
+            queryadd = `UPDATE rooms SET room_members_id = '${string_tab}' WHERE room_id = '${roomid}'`;
+            database.query(queryadd);
           }
 
           database.query(queryfinal, function (error, data3) {
@@ -172,10 +164,10 @@ wss.on("connection", function connection(ws, req) {
           });
         } else {
           querydel = `DELETE FROM rooms WHERE room_id = '${roomid}'`;
-
           database.query(querydel);
           database.query(queryfinal, function (error, data3) {
-            if (data3.length > 0) {
+            console.log(data3)
+            if (data3.length >= 0) {
               let result = Object.values(JSON.parse(JSON.stringify(data3)));
               wss.clients.forEach((ws) => {
                 ws.send(JSON.stringify(result));
@@ -228,15 +220,15 @@ wss.on("connection", function connection(ws, req) {
 
 
 
-        keys = Object.keys(new_info["info"]["families_choices"]);
+        keys = Object.keys(new_info["info"]["families"]);
 
-        new_info["info"]["families_choices"][family] = parseInt(uid)
+        new_info["info"]["families"][family]["value"] = parseInt(uid)
 
 
 
         nombre = 0;
         for (i = 0; i < keys.length; i++) {
-          if (new_info["info"]["families_choices"][keys[i]] != 0) {
+          if (new_info["info"]["families"][keys[i]]["value"] != 0) {
             nombre += 1
           }
         }
@@ -246,6 +238,17 @@ wss.on("connection", function connection(ws, req) {
           new_info["info"]["inf_throne"] = influences["throne"][`${roomtype}p`]
           new_info["info"]["inf_fief"] = influences["fief"][`${roomtype}p`]
           new_info["info"]["inf_king"] = influences["king"][`${roomtype}p`]
+
+          for (i = 0; i < keys.length; i++) {
+            if (new_info["info"]["families"][keys[i]]["value"] != 0) {
+              console.log(init_army[i])
+              new_info["info"]["families"][keys[i]].territory = init_army[i]
+            }
+            else {
+              delete new_info["info"]["families"][keys[i]];
+            }
+          }
+          console.log(new_info)
 
 
         }
@@ -269,16 +272,6 @@ wss.on("connection", function connection(ws, req) {
     }
 
 
-
-    ///CONNECTION WEBSOCKET ID SETUP
-    if (dataparsed[0] == "connection") {
-      uid = dataparsed[1];
-
-      ws.id = uid;
-    }
-
-
-
     ///CHATBOX MESSAGE
     if (dataparsed[0] == "chat_message") {
       roomid = dataparsed[1];
@@ -299,17 +292,17 @@ wss.on("connection", function connection(ws, req) {
           infos = JSON.parse(result[0]['game_info']);
           family_name = ''
 
-          keys = Object.keys(infos['families_choices'])
+          keys = Object.keys(infos['families'])
 
 
           for (const key of keys) {
-            if (infos['families_choices'][key] == uid) { family_name = key }
+            if (infos['families'][key]["value"] == uid) { family_name = key }
           }
 
           data_send = { msg: "message", message: chat_message, chat_name: family_name };
 
           wss.clients.forEach(function each(client) {
-            if (room_members_id.some(item => item === uid)) {
+            if (room_members_id.some(item => item === client.id)) {
               client.send(JSON.stringify(data_send));
             }
           });

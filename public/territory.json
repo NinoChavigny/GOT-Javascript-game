@@ -1,0 +1,838 @@
+[
+    {
+        "model": "game.territory",
+        "pk": 1,
+        "fields": {
+            "name": "Karhold", 
+            "tag": "karhold",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 2,
+        "fields": {
+            "name": "Castle Black", 
+            "tag": "castleblack",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 3,
+        "fields": {
+            "name": "Widow's Watch", 
+            "tag": "widowswatch",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 4,
+        "fields": {
+            "name": "The Stony Shore", 
+            "tag": "thestonyshore",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 5,
+        "fields": {
+            "name": "Stoney Sept", 
+            "tag": "stoneysept",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 6,
+        "fields": {
+            "name": "Kingswood", 
+            "tag": "kingswood",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 7,
+        "fields": {
+            "name": "King's Landing", 
+            "tag": "kingslanding",
+            "type": 1,
+            "crown": 2,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 1,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 8,
+        "fields": {
+            "name": "Cracklaw Pont", 
+            "tag": "cracklawpont",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 9,
+        "fields": {
+            "name": "Harrenhal", 
+            "tag": "harrenhal",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 10,
+        "fields": {
+            "name": "Blackwater", 
+            "tag": "blackwater",
+            "type": 1,
+            "crown": 0,
+            "barrel": 2,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 11,
+        "fields": {
+            "name": "Searoad Marches", 
+            "tag": "searoadmarches",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 12,
+        "fields": {
+            "name": "The Boneway", 
+            "tag": "theboneway",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 13,
+        "fields": {
+            "name": "Salt Shore", 
+            "tag": "saltshore",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 14,
+        "fields": {
+            "name": "Yronwood", 
+            "tag": "yronwood",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 15,
+        "fields": {
+            "name": "Starfall", 
+            "tag": "starfall",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 16,
+        "fields": {
+            "name": "The Arbor", 
+            "tag": "thearbor",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 17,
+        "fields": {
+            "name": "Three Towers", 
+            "tag": "threetowers",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 18,
+        "fields": {
+            "name": "Prince's Pass", 
+            "tag": "princespass",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 19,
+        "fields": {
+            "name": "Dornish Marches", 
+            "tag": "dornishmarches",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 20,
+        "fields": {
+            "name": "The Reach", 
+            "tag": "thereach",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 21,
+        "fields": {
+            "name": "Highgarden", 
+            "tag": "highgarden",
+            "type": 1,
+            "crown": 0,
+            "barrel": 2,
+            "castle": 0, 
+            "stronghold": 1,
+            "default_family": 5
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 22,
+        "fields": {
+            "name": "Riverrun", 
+            "tag": "riverrun",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 1,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 23,
+        "fields": {
+            "name": "The Eyre", 
+            "tag": "theeyre",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 24,
+        "fields": {
+            "name": "The Mountains of the Moon", 
+            "tag": "themountainsofthemoon",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 25,
+        "fields": {
+            "name": "Seagard", 
+            "tag": "seagard",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 1,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 26,
+        "fields": {
+            "name": "Moat Cailin", 
+            "tag": "moatcailin",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 1, 
+            "stronghold": 1,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 27,
+        "fields": {
+            "name": "Greywater Watch", 
+            "tag": "greywaterwatch",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 28,
+        "fields": {
+            "name": "Flint's Finger", 
+            "tag": "flintsfinger",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+
+
+
+
+
+
+
+    {
+        "model": "game.territory",
+        "pk": 29,
+        "fields": {
+            "name": "Dragonstone", 
+            "tag": "dragonstone",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 1,
+            "default_family": 0
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 30,
+        "fields": {
+            "name": "Sunspear", 
+            "tag": "sunspear",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 1, 
+            "default_family": 3
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 31,
+        "fields": {
+            "name": "Old Town", 
+            "tag": "oldtown",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 1, 
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 32,
+        "fields": {
+            "name": "Lannisport", 
+            "tag": "lannisport",
+            "type": 1,
+            "crown": 0,
+            "barrel": 2,
+            "castle": 0, 
+            "stronghold": 1, 
+            "default_family": 2
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 33,
+        "fields": {
+            "name": "Pike", 
+            "tag": "pike",
+            "type": 1,
+            "crown": 1,
+            "barrel": 2,
+            "castle": 0, 
+            "stronghold": 1, 
+            "default_family": 1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 34,
+        "fields": {
+            "name": "Winterfell", 
+            "tag": "winterfell",
+            "type": 1,
+            "crown": 1,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 1, 
+            "default_family": 4
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 35,
+        "fields": {
+            "name": "White Harbor", 
+            "tag": "whiteharbor",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 1, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 36,
+        "fields": {
+            "name": "Storms End", 
+            "tag": "stormsend",
+            "type": 1,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+
+
+
+
+
+
+
+
+    {
+        "model": "game.territory",
+        "pk": 37,
+        "fields": {
+            "name": "The Shivering Sea", 
+            "tag": "theshiveringsea",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 38,
+        "fields": {
+            "name": "Bay of Ice", 
+            "tag": "bayofice",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 39,
+        "fields": {
+            "name": "Blackwater Bay", 
+            "tag": "blackwaterbay",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 40,
+        "fields": {
+            "name": "The Golden Sound", 
+            "tag": "thegoldensound",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 41,
+        "fields": {
+            "name": "Sea of Dorne", 
+            "tag": "seaofdorne",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 42,
+        "fields": {
+            "name": "East Summer Sea", 
+            "tag": "eastsummersea",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 43,
+        "fields": {
+            "name": "West Summer Sea", 
+            "tag": "westsummersea",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 44,
+        "fields": {
+            "name": "Redwyne Straights", 
+            "tag": "redwynestraights",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 45,
+        "fields": {
+            "name": "Shipbreaker Bay", 
+            "tag": "shipbreakerbay",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 46,
+        "fields": {
+            "name": "The Narrow Sea", 
+            "tag": "thenarrowsea",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 47,
+        "fields": {
+            "name": "The Fingers", 
+            "tag": "thefingers",
+            "type": 1,
+            "crown": 0,
+            "barrel": 1,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 48,
+        "fields": {
+            "name": "The Twins", 
+            "tag": "thetwins",
+            "type": 1,
+            "crown": 1,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 49,
+        "fields": {
+            "name": "Ironman's Bay", 
+            "tag": "ironmansbay",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 50,
+        "fields": {
+            "name": "Sunset Sea", 
+            "tag": "sunsetsea",
+            "type": 2,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+
+
+
+
+
+
+
+
+
+    {
+        "model": "game.territory",
+        "pk": 51,
+        "fields": {
+            "name": "Dragonstone Port", 
+            "tag": "dragonstone_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 52,
+        "fields": {
+            "name": "Sunspear Port", 
+            "tag": "sunspear_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 53,
+        "fields": {
+            "name": "Old Town Port", 
+            "tag": "oldtown_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 54,
+        "fields": {
+            "name": "Lannisport Port", 
+            "tag": "lannisport_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 55,
+        "fields": {
+            "name": "Pike Port", 
+            "tag": "pike_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 56,
+        "fields": {
+            "name": "Winterfell Port", 
+            "tag": "winterfell_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 57,
+        "fields": {
+            "name": "White Harbor Port", 
+            "tag": "whiteharbor_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    },
+    {
+        "model": "game.territory",
+        "pk": 58,
+        "fields": {
+            "name": "Storms End Port", 
+            "tag": "stormsend_port",
+            "type": 3,
+            "crown": 0,
+            "barrel": 0,
+            "castle": 0, 
+            "stronghold": 0,
+            "default_family": -1
+        }
+    }
+]

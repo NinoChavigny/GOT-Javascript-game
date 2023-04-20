@@ -1,0 +1,128 @@
+[
+    {
+        "shipbreakerbay": {
+            "ships": 2,
+            "footmen": 0,
+            "knights": 0,
+            "engines": 0
+        },
+        "dragonstone": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 1,
+            "engines": 0
+        },
+        "kingswood": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 0,
+            "engines": 0
+        }
+    },
+    {
+        "ironmansbay": {
+            "ships": 1,
+            "footmen": 0,
+            "knights": 0,
+            "engines": 0
+        },
+        "pike": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 1,
+            "engines": 0
+        },
+        "pike_port": {
+            "ships": 1,
+            "footmen": 0,
+            "knights": 0,
+            "engines": 0
+        },
+        "graywaterwatch": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 0,
+            "engines": 0
+        }
+    },
+    {
+        "thegoldensound": {
+            "ships": 1,
+            "footmen": 0,
+            "knights": 0,
+            "engines": 0
+        },
+        "lannisport": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 1,
+            "engines": 0
+        },
+        "stoneysept": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 0,
+            "engines": 0
+        }
+    },
+    {
+        "seaofdorne": {
+            "ships": 1,
+            "footmen": 0,
+            "knights": 0,
+            "engines": 0
+        },
+        "sunspear": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 1,
+            "engines": 0
+        },
+        "saltshore": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 0,
+            "engines": 0
+        }
+    },
+    {
+        "theshiveringsea": {
+            "ships": 1,
+            "footmen": 0,
+            "knights": 0,
+            "engines": 0
+        },
+        "winterfell": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 1,
+            "engines": 0
+        },
+        "whiteharbor": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 0,
+            "engines": 0
+        }
+    },
+    {
+        "redwynestraights": {
+            "ships": 1,
+            "footmen": 0,
+            "knights": 0,
+            "engines": 0
+        },
+        "highgarden": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 1,
+            "engines": 0
+        },
+        "dornishmarches": {
+            "ships": 0,
+            "footmen": 1,
+            "knights": 0,
+            "engines": 0
+        }
+    }
+]

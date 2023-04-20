@@ -26,13 +26,16 @@
 
 
     <script>
+
       const sendBtn = document.querySelector('#send');
       const messages = document.querySelector('#messages');
       const messageBox = document.querySelector('#messageBox');
+
       let main = document.getElementById("main");
       var uid = JSON.parse("<%- JSON.stringify(uid) %>");
       var roomid = JSON.parse("<%- roomid %>");
-      const ws = new WebSocket(`ws://localhost:3000/play?roomid=${roomid}`);
+
+      const ws = new WebSocket(`ws://localhost:3000/${uid}`);
 
       ws.onopen = function () {
         playing(uid, roomid);
@@ -46,71 +49,128 @@
 
 
         if (data["msg"] == "infos") {
-          keys = Object.keys(data["info"]["families_choices"]);
+          keys = Object.keys(data["info"]["families"]);
           room_type = data["room_type"]
+          values_arr = []
 
           if (data["info"]["started"] == 0) {
-            values_arr = Object.values(data["info"]["families_choices"]);
+
+            for (j = 0; j < keys.length; j++) {
+              values_arr[j] = data["info"]["families"][keys[j]]["value"]
+            }
 
             if (values_arr.some(item => item === uid)) {
-              main.innerHTML = `<img src=/assets/map.svg alt=FamSVG />`;
+              main.innerHTML = `<img src=/assets/map_clear.svg alt=FamSVG />`;
 
             }
             else {
               div += `<p class="text-center">Choose your family !</p>`
 
-              if (room_type == 3) {
-                for (i = 0; i < keys.length; i++) {
-                  if (data["info"]["families_choices"][keys[i]] == 0
-                    & keys[i] != "tyrell"
-                    & keys[i] != "martell"
-                    & keys[i] != "greyjoy") {
-                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
-                          <div class="familyname">${keys[i]}</div>
-                          <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
+              fetch("/static/families.json")
+                .then(response => response.json())
+                .then(families => {
+                  for (i = 0; i < room_type; i++) {
+                    fam = families["reverse_families"][families["playable_families"][`${room_type}`][i]]
+                    console.log(fam, data["info"]["families"][fam])
+                    if (data["info"]["families"][fam]["value"] == 0) {
+                      div += `<button id="families" onclick="family_choice('${fam}', '${uid}', '${roomid}')">
+                          <div class="familyname">${fam}</div>
+                          <img src=/assets/logos/${fam}_logo.svg alt=FamSVG />
                         </button>`;
+                    }
                   }
-                }
-              }
-              if (room_type == 4) {
-                for (i = 0; i < keys.length; i++) {
-                  if (data["info"]["families_choices"][keys[i]] == 0
-                    & keys[i] != "tyrell"
-                    & keys[i] != "martell") {
-                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
-                          <div class="familyname">${keys[i]}</div>
-                          <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
-                        </button>`;
-                  }
-                }
-              }
-              if (room_type == 5) {
-                for (i = 0; i < keys.length; i++) {
-                  if (data["info"]["families_choices"][keys[i]] == 0 & keys[i] != "martell") {
-                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
-                          <div class="familyname">${keys[i]}</div>
-                          <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
-                        </button>`;
-                  }
-                }
-              }
-              if (room_type == 6) {
-                for (i = 0; i < keys.length; i++) {
-                  if (data["info"]["families_choices"][keys[i]] == 0) {
-                    div += `<button id="families" onclick="family_choice('${keys[i]}', '${uid}', '${roomid}')">
-                          <div class="familyname">${keys[i]}</div>
-                          <img src=/assets/logos/${keys[i]}_logo.svg alt=FamSVG />
-                        </button>`;
-                  }
-                }
-              }
+                  main.innerHTML = div;
+                })
 
-              main.innerHTML = div;
             }
 
           }
           else {
-            main.innerHTML = `<img src=/assets/map.svg alt=FamSVG />`;
+            main.innerHTML = `<object class="border" id="svg_map" data="/assets/map.svg" type="image/svg+xml"></object>`;
+
+            objet = document.getElementById("svg_map")
+            objet.addEventListener('load', function () {
+              objContent = objet.contentDocument
+
+
+              fetch("/static/territory.json")
+                .then(response => response.json())
+                .then(territories => {
+                  for (const item of territories) {
+                    item_svg = objContent.getElementById(`svg_${item.fields.tag}`)
+                    item_children = Array.from(item_svg.children)///.filter(node => node.nodeType === Node.ELEMENT_NODE);
+
+
+                    for (let i = 1; i < item_children.length; i++) {
+                      for (subchild of Array.from(item_children[i].children)) {
+
+                        subchild_id = subchild.getAttribute('id');
+                        if (subchild_id != `svg_${item.fields.tag}_neutral_round` && subchild_id != `svg_${item.fields.tag}_garrison_round` &&
+                          subchild_id != `svg_${item.fields.tag}_neutral_text` && subchild_id != `svg_${item.fields.tag}_garrison_text`) {
+                          subchild.setAttribute("display", "none")
+                        }
+                      }
+
+                    }
+                  }
+
+                  for (const key of keys) {
+                    for (territory of Object.keys(data["info"]["families"][key]["territory"])) {
+
+                      territory_svg = objContent.getElementById(`svg_${territory}`)
+
+                      territory_children = Array.from(territory_svg.childNodes).filter(node => node.nodeType === Node.ELEMENT_NODE);
+                      console.log(territory_children)
+                      for (let i = 1; i < territory_children.length; i++) {
+                        for (subchild of Array.from(territory_children[i].children)) {
+
+                          subchild.removeAttribute('display');
+                        }
+                      }
+
+
+
+
+                      var result = territories.find(item => item.fields.tag === territory)
+
+                      army_svg = territory_svg.querySelector(`#svg_${territory}_army`)
+
+                      if (result.fields.type == 3 || result.fields.type == 1) {
+
+                        pawn = army_svg.querySelector(`#svg_${territory}_nb_pawn`)
+                        horse = army_svg.querySelector(`#svg_${territory}_nb_horse`)
+                        tour = army_svg.querySelector(`#svg_${territory}_nb_tour`)
+                        ship = army_svg.querySelector(`#svg_${territory}_nb_ship`)
+
+
+                        pawn.querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["footmen"]
+                        army_svg.querySelector(`#svg_${territory}_nb_pawn`).querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["footmen"]
+
+                        horse.querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["knights"]
+                        army_svg.querySelector(`#svg_${territory}_nb_horse`).querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["knights"]
+
+                        tour.querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["engines"]
+                        army_svg.querySelector(`#svg_${territory}_nb_horse`).querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["knights"]
+
+                        if (result.fields.type == 3) {
+                          ship.querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["ships"]
+                          army_svg.querySelector(`#svg_${territory}_nb_tour`).querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["engines"]
+                        }
+
+                      }
+                      else {
+                        ship = army_svg.querySelector(`#svg_${territory}_nb_ship`)
+                        ship.querySelector('tspan').innerHTML = data["info"]["families"][key]["territory"][`${territory}`]["ships"]
+                      }
+
+                    }
+                  }
+
+
+
+                })
+
+            })
           }
         }
 
@@ -157,6 +217,13 @@
         } else {
           alert("ERROR: Not connected... refresh to try again!");
         }
+      }
+
+      function buildMap() {
+
+
+
+
       }
     </script>
 

@@ -289,10 +289,9 @@
 
 
       <script>
-         let main = document.getElementById("main");
          var uid = JSON.parse("<%- JSON.stringify(uid) %>");
          var roomid = JSON.parse("<%- roomid %>");
-         const ws = new WebSocket(`ws://localhost:3000/route/influences`);
+         const ws = new WebSocket(`ws://localhost:3000/${uid}`);
 
          ws.onopen = function () {
             playing(uid, roomid);

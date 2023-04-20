@@ -1,0 +1,38 @@
+{
+    "reverse_families": [
+        "baratheon",
+        "greyjoy",
+        "lannister",
+        "martell",
+        "stark",
+        "tyrell"
+    ],
+    "playable_families": {
+        "6": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "5": [
+            0,
+            1,
+            2,
+            4,
+            5
+        ],
+        "4": [
+            0,
+            1,
+            2,
+            4
+        ],
+        "3": [
+            0,
+            2,
+            4
+        ]
+    }
+}
