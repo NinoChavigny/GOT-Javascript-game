@@ -15,6 +15,8 @@ const server = http.createServer(app);
 //const for the start of a game
 const influences = require("./influences.json");
 const init_army = require("./init_army.json");
+const westeros_cards = require("./westeros_cards.json");
+
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -205,6 +207,7 @@ wss.on("connection", function connection(ws, req) {
       uid = dataparsed[2];
       roomid = dataparsed[3];
       roomtype = 0
+      room_members_id = []
 
       new_info = {};
 
@@ -214,6 +217,7 @@ wss.on("connection", function connection(ws, req) {
         if (data.length > 0) {
           let result = Object.values(JSON.parse(JSON.stringify(data)));
           infos = JSON.parse(result[0]["game_info"]);
+          room_members_id = JSON.parse(result[0]['room_members_id']);
           roomtype = result[0]["room_type"]
           new_info = { info: infos };
         }
@@ -248,7 +252,24 @@ wss.on("connection", function connection(ws, req) {
               delete new_info["info"]["families"][keys[i]];
             }
           }
-          console.log(new_info)
+
+          deck1 = [];
+          deck2 = [];
+          deck3 = [];
+          for (const card of westeros_cards) {
+            if (card.fields.deck_number == 1) { deck1.push(card) }
+            if (card.fields.deck_number == 2) { deck2.push(card) }
+            if (card.fields.deck_number == 3) { deck3.push(card) }
+
+          }
+
+          shuffleArray(deck1)
+          shuffleArray(deck2)
+          shuffleArray(deck3)
+
+          new_info["info"].deck1 = deck1
+          new_info["info"].deck2 = deck2
+          new_info["info"].deck3 = deck3
 
 
         }
@@ -264,7 +285,11 @@ wss.on("connection", function connection(ws, req) {
             infos = JSON.parse(result[0]["game_info"]);
             data_send = { msg: "infos", info: infos };
 
-            ws.send(JSON.stringify(data_send));
+            wss.clients.forEach(function each(client) {
+              if (room_members_id.some(item => item === client.id)) {
+                client.send(JSON.stringify(data_send));
+              }
+            });
 
           }
         });
@@ -323,5 +348,15 @@ wss.on("connection", function connection(ws, req) {
 server.listen(port, () => {
   console.log("Listening on port 3000");
 });
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
 
 module.exports.server = server;

@@ -2,14 +2,14 @@
 
 
   <div class="text-center container w-25 border border-0 top-100 start-50 tertiary-bg" id="welcome">
-    <h3>Welcome to Express Dashboard</h3>
+    <h3>Welcome to your Dashboard</h3>
     <h5>
       <%= locals.user ? user : "User" %>
     </h5>
     <a href="/route/logout">Logout</a>
   </div>
 
-  <div class="text-center container w-25 border" id="rooms">
+  <div class="text-center container w-25" id="rooms">
     <h3>All Games</h3>
 
     <table class="table" id="table1">
@@ -19,7 +19,7 @@
     <h5></h5>
   </div>
 
-  <div class="text-center container w-25 border" id="user-rooms">
+  <div class="text-center container w-25" id="user-rooms">
     <h3>Your Games</h3>
     <button class="btn btn-info rounded-pill mb-2" type="button" data-bs-toggle="collapse"
       data-bs-target="#collapseExample">
@@ -173,15 +173,6 @@
             </div>
           </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
         </td>
     </tr>`
         }

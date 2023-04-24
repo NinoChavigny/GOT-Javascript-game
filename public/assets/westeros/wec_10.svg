@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="38.293751mm"
+   height="50.793751mm"
+   viewBox="0 0 38.293751 50.793751"
+   version="1.1"
+   id="svg308"
+   inkscape:export-filename="wec_8.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview310"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs305" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-103.33013,-80.596278)">
+    <g
+       id="g3200-2-5-5-3-7-3"
+       inkscape:label="wec_wa"
+       transform="translate(148.33013,170.59628)"
+       style="stroke:none">
+      <rect
+         style="fill:#803300;stroke:#000000;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+         id="rect901-3-5-0-9-3-6-6"
+         width="37.5"
+         height="50"
+         x="-44.603123"
+         y="-89.603127"
+         rx="1.3228769"
+         ry="1.3228769"
+         inkscape:label="wec_wa_area" />
+      <g
+         id="g163222-4-4-6-3-4-7"
+         transform="translate(-41.853124,-89.085954)"
+         inkscape:label="wec_wa_image"
+         style="display:inline">
+        <rect
+           style="fill:#ffffff;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8977-7-8-2-8-3-5"
+           width="27.103125"
+           height="24.603125"
+           x="-39.154686"
+           y="-86.603127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_wa_image_area"
+           transform="translate(41.853124,89.085954)" />
+        <path
+           d="m 16.250001,6.7249596 c -4.30738,0 -7.5557031,2.9815124 -7.5557031,6.9349394 0,1.291174 0.4970699,4.193982 0.5182259,4.316951 0.08264,0.479094 0.495592,0.831033 0.9818642,0.836448 1.405518,0.01533 1.517091,0.436278 1.522223,0.877878 v 1.838932 c 0,0.497291 0.363019,0.920317 0.854676,0.99581 0.02915,0.0045 0.281103,0.0425 0.656464,0.09107 v -0.769859 c 0,-0.278145 0.225538,-0.503682 0.503714,-0.503682 0.278176,0 0.503713,0.225537 0.503713,0.503682 v 0.886315 c 0.48029,0.04873 1.008592,0.09149 1.511141,0.110376 v -0.996691 c 0,-0.278145 0.225537,-0.503682 0.503713,-0.503682 0.278176,0 0.503714,0.225537 0.503714,0.503682 v 0.995622 c 0.48835,-0.02018 1.022035,-0.06466 1.51114,-0.114407 V 21.84716 c 0,-0.278144 0.225538,-0.503682 0.503714,-0.503682 0.278175,0 0.503713,0.225538 0.503713,0.503682 v 0.766369 c 0.368782,-0.04631 0.61834,-0.08207 0.648091,-0.08635 0.495559,-0.07188 0.863018,-0.496599 0.863018,-0.9971 v -1.736207 c -0.0093,-0.445534 0.146015,-0.602283 0.197268,-0.653756 0.222357,-0.223082 0.678344,-0.338182 1.293977,-0.327101 0.49855,0.02484 0.928469,-0.345545 1.012842,-0.836194 0.02112,-0.122938 0.518194,-3.025745 0.518194,-4.31692 0,-3.953427 -3.248322,-6.9349393 -7.555702,-6.9349393 z m -2.518567,9.0662454 c -0.834622,0 -1.511142,-0.657693 -1.511142,-1.46908 0,-0.811388 0.67652,-1.04933 1.511142,-1.04933 0.834621,0 1.51114,0.237942 1.51114,1.04933 0,0.811387 -0.676519,1.46908 -1.51114,1.46908 z m 3.897136,1.864214 c -0.09542,0.153474 -0.259727,0.237815 -0.42822,0.237815 -0.09076,0 -0.182753,-0.02433 -0.265394,-0.07599 l -0.684955,-0.425732 -0.684988,0.425732 c -0.236619,0.146832 -0.547001,0.07401 -0.693581,-0.161817 -0.146833,-0.236085 -0.07451,-0.54672 0.161849,-0.693551 l 0.950854,-0.590982 c 0.162825,-0.101307 0.368939,-0.101307 0.531763,0 l 0.950854,0.590982 c 0.236337,0.146801 0.308651,0.457434 0.161818,0.693551 z m 1.139998,-1.864214 c -0.834622,0 -1.51114,-0.657693 -1.51114,-1.46908 0,-0.811388 0.676518,-1.04933 1.51114,-1.04933 0.834622,0 1.511141,0.237942 1.511141,1.04933 0,0.811387 -0.676519,1.46908 -1.511141,1.46908 z"
+           id="path6943"
+           style="stroke-width:0.264583" />
+      </g>
+      <g
+         id="g10269-6-7-5-8-0-9"
+         inkscape:label="wec_wa_name">
+        <rect
+           style="fill:#ffb380;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8979-6-1-3-8-9-3"
+           width="32.103127"
+           height="15"
+           x="-41.706249"
+           y="-57.103127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_wa_name_area" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.52777px;line-height:1.25;font-family:cabin;-inkscape-font-specification:cabin;text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="-25.674089"
+           y="-48.721184"
+           id="text10262-4-1-8-9-2-6"
+           inkscape:label="wec_wa_name_text"><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.264583"
+             x="-25.674089"
+             y="-48.721184"
+             id="tspan729">Wildlings Attack</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

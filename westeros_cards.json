@@ -1,0 +1,189 @@
+[
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Mustering",
+            "tag": "wec_0",
+            "deck_number": 1,
+            "description": "Recruit new units in StrongHold and Castles.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Last Days of Summer",
+            "tag": "wec_1",
+            "deck_number": 1,
+            "description": "Nothing happens.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Supply",
+            "tag": "wec_2",
+            "deck_number": 1,
+            "description": "Adjust Supply track. Reconcile armies.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "A Throne of Blades",
+            "tag": "wec_3",
+            "deck_number": 1,
+            "description": "The holder of the Iron Throne Token chooses whether a) everyone updates their Supply then reconciles armies, b) everyone muster units or c) this card has no effect.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Winter is Coming",
+            "tag": "wec_4",
+            "deck_number": 1,
+            "description": "Immediatly shuffle this deck. Then draw and resolve a new card.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Clash of Kings",
+            "tag": "wec_5",
+            "deck_number": 2,
+            "description": "Bid on the three Influence tracks.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Dark Wings, Dark Words",
+            "tag": "wec_6",
+            "deck_number": 2,
+            "description": "The holder of the Messenger Raven token chooses whether a) everyone bids on the three Influence tracks, b) everyone collects one Power token for every power icon present in areas they control or c) this card has no effect.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Last Days of Summer",
+            "tag": "wec_7",
+            "deck_number": 2,
+            "description": "Nothing happens.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Game of Thrones",
+            "tag": "wec_8",
+            "deck_number": 2,
+            "description": "Each player collects on Power token for each power icon printed on areas he controls.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Winter is Coming",
+            "tag": "wec_9",
+            "deck_number": 2,
+            "description": "Immediately shuffle this deck. Then draw an resolve a new card.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Wildlings Attack",
+            "tag": "wec_10",
+            "deck_number": 3,
+            "description": "The wildlings attack Westeros.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Put to the Sword",
+            "tag": "wec_11",
+            "deck_number": 3,
+            "description": "The holder of the Valerian Steel Blade chooses one the following conditions for this Planning Phase: a) Defense Orders cannot be played, b) March +1 Orders cannot be played, or c) no restrictions.",
+            "wildlings_attack": false,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Web of Lies",
+            "tag": "wec_12",
+            "deck_number": 3,
+            "description": "Support Orders cannot be played during this Planning Phase.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Feast for Crows",
+            "tag": "wec_13",
+            "deck_number": 3,
+            "description": "Consolidate Orders cannot be played during this Planning Phase.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Rains of Autumn",
+            "tag": "wec_14",
+            "deck_number": 3,
+            "description": "March +1 Orders cannot be played during this Planning Phase.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Sea of Storms",
+            "tag": "wec_15",
+            "deck_number": 3,
+            "description": "Raid Orders cannot be played during this Planning Phase.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    },
+    {
+        "model": "game.westeroscard",
+        "fields": {
+            "name": "Storm of Swords",
+            "tag": "wec_16",
+            "deck_number": 3,
+            "description": "Defense orders cannot be played during this Planning Phase.",
+            "wildlings_attack": true,
+            "image": ""
+        }
+    }
+]

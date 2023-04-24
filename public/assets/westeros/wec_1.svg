@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="38.293751mm"
+   height="50.793755mm"
+   viewBox="0 0 38.293751 50.793755"
+   version="1.1"
+   id="svg362"
+   inkscape:export-filename="wec_1.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview364"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs359" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-67.078932,-101.28055)">
+    <g
+       id="g3200-6-0"
+       inkscape:label="wec_ldof"
+       transform="translate(112.07893,191.28055)"
+       style="stroke:none">
+      <rect
+         style="fill:#803300;stroke:#000000;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+         id="rect901-3-3-3"
+         width="37.5"
+         height="50"
+         x="-44.603123"
+         y="-89.603127"
+         rx="1.3228769"
+         ry="1.3228769"
+         inkscape:label="wec_ldof_area" />
+      <g
+         id="g12268-8-0"
+         inkscape:label="wec_ldof_image">
+        <rect
+           style="fill:#ffffff;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8977-5-4"
+           width="27.103125"
+           height="24.603125"
+           x="-39.154686"
+           y="-86.603127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_ldof_image_area" />
+        <path
+           d="m 22,14 c 2.8,0 5,-2.2 5,-5 0,-2.8 -2.2,-5 -5,-5 -2.8,0 -5,2.2 -5,5 0,2.8 2.2,5 5,5 z"
+           id="path13802"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+        <path
+           d="m 22,3 c 0.6,0 1,-0.4 1,-1 V 1 C 23,0.4 22.6,0 22,0 21.4,0 21,0.4 21,1 v 1 c 0,0.6 0.4,1 1,1 z"
+           id="path13804"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+        <path
+           d="m 14.6,5.9 0.9,0.5 C 15.7,6.5 15.8,6.5 16,6.5 16.3,6.5 16.7,6.3 16.9,6 17.2,5.5 17,4.9 16.5,4.6 L 15.6,4.1 C 15.1,3.8 14.5,4 14.2,4.5 13.9,5 14.1,5.6 14.6,5.9 Z"
+           id="path13806"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+        <path
+           d="m 27.6,13.4 0.9,0.5 c 0.2,0.1 0.3,0.1 0.5,0.1 0.3,0 0.7,-0.2 0.9,-0.5 0.3,-0.5 0.1,-1.1 -0.4,-1.4 l -0.9,-0.5 c -0.5,-0.3 -1.1,-0.1 -1.4,0.4 -0.3,0.5 -0.1,1.1 0.4,1.4 z"
+           id="path13808"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+        <path
+           d="m 28.1,6.5 c 0.2,0 0.3,0 0.5,-0.1 L 29.5,5.9 C 30,5.6 30.1,5 29.9,4.5 29.6,4 29,3.9 28.5,4.1 L 27.6,4.6 C 27.1,4.9 27,5.5 27.2,6 c 0.2,0.3 0.5,0.5 0.9,0.5 z"
+           id="path13810"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+        <path
+           d="M 31,22 H 28.2 L 27.5,21.7 C 25,20.7 23.1,18.9 21.9,16.5 21.8,16.3 21.6,16.1 21.3,16 l -6,-2 C 15,13.9 14.7,14 14.4,14.1 L 3.7,22 H 1 c -0.6,0 -1,0.4 -1,1 0,0.6 0.4,1 1,1 h 27 c 0,0 0,0 0,0 0,0 0,0 0,0 h 3 c 0.6,0 1,-0.4 1,-1 0,-0.6 -0.4,-1 -1,-1 z"
+           id="path13812"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+        <path
+           d="M 27,26 H 5 c -0.6,0 -1,0.4 -1,1 0,0.6 0.4,1 1,1 h 22 c 0.6,0 1,-0.4 1,-1 0,-0.6 -0.4,-1 -1,-1 z"
+           id="path13814"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+        <path
+           d="M 22,30 H 10 c -0.6,0 -1,0.4 -1,1 0,0.6 0.4,1 1,1 h 12 c 0.6,0 1,-0.4 1,-1 0,-0.6 -0.4,-1 -1,-1 z"
+           id="path13816"
+           style="stroke:none;stroke-width:0.376296"
+           transform="matrix(0.703125,0,0,0.703125,-36.853123,-85.551564)" />
+      </g>
+      <g
+         id="g10269-9-4"
+         inkscape:label="wec_ldof_name">
+        <rect
+           style="fill:#ffb380;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8979-8-4"
+           width="32.103127"
+           height="15"
+           x="-41.706249"
+           y="-57.103127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_ldof_name_area" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.52777px;line-height:1.25;font-family:cabin;-inkscape-font-specification:cabin;text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="-25.771103"
+           y="-50.502708"
+           id="text10262-48-7"
+           inkscape:label="wec_ldof_name_text"><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.264583"
+             x="-25.771103"
+             y="-50.502708"
+             id="tspan10480-1-6">Last Days of</tspan><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.264583"
+             x="-25.771103"
+             y="-46.092995"
+             id="tspan13694">Summer</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

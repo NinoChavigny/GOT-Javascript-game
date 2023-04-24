@@ -142,6 +142,14 @@ router.get('/gamecards', (req, res) => {
     }
 })
 
+router.get('/inventory', (req, res) => {
+    if (req.session.user && req.session.uid) {
+        res.render('inventory', { title: 'inventory', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid })
+    } else {
+        res.send("Unauthorize User")
+    }
+})
+
 
 
 module.exports = router;

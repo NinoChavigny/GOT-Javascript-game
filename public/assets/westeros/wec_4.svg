@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="38.293751mm"
+   height="50.793751mm"
+   viewBox="0 0 38.293751 50.793751"
+   version="1.1"
+   id="svg308"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview310"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs305" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-84.111192,-26.764418)">
+    <g
+       id="g3200-6"
+       inkscape:label="wec_wic"
+       transform="translate(129.11119,116.76442)"
+       style="stroke:none">
+      <rect
+         style="fill:#803300;stroke:#000000;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+         id="rect901-3-3"
+         width="37.5"
+         height="50"
+         x="-44.603123"
+         y="-89.603127"
+         rx="1.3228769"
+         ry="1.3228769"
+         inkscape:label="wec_wic_area" />
+      <g
+         id="g12268-8"
+         inkscape:label="wec_wic_image">
+        <rect
+           style="fill:#ffffff;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8977-5"
+           width="27.103125"
+           height="24.603125"
+           x="-39.154686"
+           y="-86.603127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_wic_image_area" />
+        <path
+           d="m -25.603124,-83.355892 c -4.992557,0 -9.054328,4.061771 -9.054328,9.054328 0,4.992555 4.061771,9.054327 9.054328,9.054327 4.992556,0 9.054328,-4.061772 9.054328,-9.054327 0,-4.992557 -4.061772,-9.054328 -9.054328,-9.054328 z m -5.734407,5.130786 h 0.603621 c 0.967605,0 1.896882,0.354627 2.616701,0.998692 0.124045,0.11107 0.134608,0.301811 0.02354,0.426157 -0.05945,0.0667 -0.142152,0.100508 -0.224848,0.100508 -0.07153,0 -0.143663,-0.02536 -0.201308,-0.07696 -0.609055,-0.544768 -1.395272,-0.844769 -2.214086,-0.844769 h -0.603621 c -0.166902,0 -0.301812,-0.134908 -0.301812,-0.30181 0,-0.166902 0.13491,-0.301811 0.301812,-0.301811 z m 8.024548,10.203924 c -0.05373,0.03893 -0.115593,0.05765 -0.177163,0.05765 -0.09356,0 -0.185311,-0.04316 -0.244467,-0.124346 -0.09809,-0.134608 -0.06851,-0.323541 0.0667,-0.421328 l 2.569316,-1.868813 h -2.391851 c -0.957344,0 -1.879377,-0.347988 -2.595876,-0.980281 -0.125251,-0.110158 -0.137022,-0.300906 -0.02686,-0.425857 0.110762,-0.125251 0.30181,-0.137021 0.425855,-0.02686 0.606338,0.534808 1.386519,0.829376 2.196881,0.829376 h 2.391852 l -2.569317,-1.868512 c -0.134909,-0.09778 -0.164788,-0.28672 -0.0667,-0.421328 0.09779,-0.135212 0.286116,-0.164789 0.421328,-0.0667 l 3.655836,2.65835 z m 0,-7.243462 c -0.05373,0.03893 -0.115593,0.05765 -0.177163,0.05765 -0.09356,0 -0.185311,-0.04316 -0.244467,-0.124345 -0.09809,-0.134609 -0.06851,-0.323542 0.0667,-0.421329 l 2.569316,-1.868813 h -2.391851 c -1.830484,0 -3.31992,1.489437 -3.31992,3.31992 0,2.16338 -1.760161,3.923542 -3.923543,3.923542 h -0.603621 c -0.166902,0 -0.301811,-0.13491 -0.301811,-0.301811 0,-0.166902 0.134909,-0.30181 0.301811,-0.30181 h 0.603621 c 1.830484,0 3.319921,-1.489438 3.319921,-3.319921 0,-2.16338 1.760161,-3.923542 3.923542,-3.923542 h 2.391851 l -2.569316,-1.868512 c -0.13491,-0.09778 -0.164788,-0.28672 -0.0667,-0.421327 0.09779,-0.135211 0.286117,-0.16479 0.421329,-0.0667 l 3.655835,2.65835 z"
+           id="path13240"
+           style="stroke:none;stroke-width:0.264583" />
+      </g>
+      <g
+         id="g10269-9"
+         inkscape:label="wec_wic_name">
+        <rect
+           style="fill:#ffb380;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8979-8"
+           width="32.103127"
+           height="15"
+           x="-41.706249"
+           y="-57.103127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_wic_name_area" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.52777px;line-height:1.25;font-family:cabin;-inkscape-font-specification:cabin;text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="-25.712896"
+           y="-48.707073"
+           id="text10262-48"
+           inkscape:label="wec_wic_name_text"><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.264583"
+             x="-25.712896"
+             y="-48.707073"
+             id="tspan10480-1">Winter is Coming</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

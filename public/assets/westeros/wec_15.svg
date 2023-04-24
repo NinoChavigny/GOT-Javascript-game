@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="38.293751mm"
+   height="50.793751mm"
+   viewBox="0 0 38.293751 50.793751"
+   version="1.1"
+   id="svg204"
+   inkscape:export-filename="wec_14.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview206"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs201" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-69.960882,-132.60605)">
+    <g
+       id="g3200-2-5-5-3-7-3-2"
+       inkscape:label="wec_sost"
+       transform="translate(114.96088,222.60605)"
+       style="stroke:none">
+      <rect
+         style="fill:#803300;stroke:#000000;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+         id="rect901-3-5-0-9-3-6-6-6"
+         width="37.5"
+         height="50"
+         x="-44.603123"
+         y="-89.603127"
+         rx="1.3228769"
+         ry="1.3228769"
+         inkscape:label="wec_sost_area" />
+      <g
+         id="g163222-4-4-6-3-4-7-1"
+         transform="translate(-41.853124,-89.085954)"
+         inkscape:label="wec_sost_image"
+         style="display:inline">
+        <rect
+           style="fill:#ffffff;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8977-7-8-2-8-3-5-8"
+           width="27.103125"
+           height="24.603125"
+           x="-39.154686"
+           y="-86.603127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_sost_image_area"
+           transform="translate(41.853124,89.085954)" />
+        <circle
+           cx="-25.603123"
+           cy="-74.603127"
+           fill="#fce94f"
+           stop-color="#000000"
+           style="fill:#000000;stroke:none;paint-order:fill markers stroke"
+           id="ellipse19465"
+           r="8.5"
+           transform="translate(41.853123,89.085954)" />
+        <path
+           fill="#000000"
+           d="m -25.490263,-79.980866 c 0,0 -0.555042,0.546837 -0.555042,0.899169 0,0.430278 0.682943,1.097294 0.682943,1.097294 -0.330613,-0.68415 -0.369223,-1.329206 -0.127901,-1.996463 z m 3.593296,0.131521 c 0,0 0.08687,0.606444 0.04102,0.90496 -0.03379,0.21526 -0.222017,0.614408 -0.222017,0.614408 0,0 0.784299,-0.343403 0.820497,-0.701526 0.03379,-0.344367 -0.639506,-0.817842 -0.639506,-0.817842 z m -1.139043,0.306238 c -0.0025,0.170857 -0.02172,0.342679 -0.05551,0.507502 -0.08446,0.381773 -0.236495,0.731932 -0.511603,0.932471 -0.19788,0.145276 -0.492294,0.200781 -0.781882,0.07288 -0.222015,-0.09918 -0.4561,-0.281865 -0.731207,-0.573142 -0.03137,0.238186 -0.0073,0.526566 0.166513,0.84101 l 0.294413,0.533323 -0.567108,-0.229257 c -0.340268,-0.137553 -0.603309,-0.424727 -0.871178,-0.754616 -0.01207,0.479509 -0.0096,0.995939 0.07964,1.454453 0.127901,0.651571 0.393356,1.153523 1.05458,1.356233 -0.147206,-0.263041 -0.14962,-0.562281 0.0193,-0.892893 0.492297,0.59848 0.588827,0.06757 0.801191,-0.03861 0.139967,-0.06998 0.229256,-0.383704 0.137554,-1.020795 0.180992,0.320959 0.376463,0.772233 0.711902,0.854282 0.448861,0.111008 0.791539,-0.328199 1.122151,-0.839803 0,0 -0.171339,0.772233 0,1.042514 0.07481,0.118249 0.139967,0.202712 0.552629,0.190645 -0.38129,0.453687 -0.743274,0.731208 -1.426218,1.047341 1.254879,-0.06757 2.364963,-0.909787 3.031014,-1.739937 -0.316133,0.08446 -0.51643,0.103769 -0.832564,0.0917 l -0.557455,-0.01931 0.424728,-0.361984 c 0.282348,-0.243736 0.475406,-0.721555 0.564696,-1.221093 0.0555,-0.303343 0.06999,-0.608616 0.06274,-0.870934 -0.180992,0.179061 -0.381291,0.373085 -0.600893,0.571452 -0.369225,0.331336 -0.755341,0.646986 -1.114911,0.808672 l -0.236497,0.106182 -0.06274,-0.250976 c -0.137551,-0.557695 -0.340262,-1.16245 -0.673287,-1.597314 z m -2.019871,4.570412 c -0.149621,0.113421 -0.316134,0.243736 -0.497126,0.390943 -0.622613,0.501951 -1.404499,1.165589 -2.188797,1.848533 -0.781886,0.682944 -1.568598,1.385193 -2.194348,1.966781 -0.541046,0.504364 -0.957569,0.917026 -1.145077,1.129391 l 0.647952,-0.236497 -0.598481,0.482646 c 0.03379,0.05792 0.07916,0.115829 0.143587,0.183405 0.03885,0.03862 0.08712,0.08446 0.143829,0.130315 l 2.090337,-1.640996 -0.485058,0.542976 -1.235573,1.377953 c 0.09484,0.06757 0.19885,0.139968 0.314444,0.217191 2.052932,-2.017458 4.133135,-4.034918 6.355717,-6.054789 -0.222017,-0.01207 -0.417487,-0.0362 -0.615372,-0.08205 l -1.365888,1.093193 0.989424,-1.206615 c -0.113425,-0.03861 -0.23167,-0.08688 -0.35957,-0.14238 z"
+           id="path151416"
+           style="fill:#ffffff;stroke:none;stroke-width:0.264583"
+           transform="translate(41.853123,89.085954)" />
+        <path
+           style="fill:#ffffff;stroke:#ffffff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+           d="m -34.603123,-82.103131 17.5,14.999999"
+           id="path1621"
+           transform="translate(41.853123,89.085954)" />
+      </g>
+      <g
+         id="g10269-6-7-5-8-0-9-7"
+         inkscape:label="wec_sost_name">
+        <rect
+           style="fill:#ffb380;stroke:#ffffff;stroke-width:0.79375;stroke-linecap:round;paint-order:fill markers stroke;stop-color:#000000"
+           id="rect8979-6-1-3-8-9-3-9"
+           width="32.103127"
+           height="15"
+           x="-41.706249"
+           y="-57.103127"
+           rx="1.3228769"
+           ry="1.322877"
+           inkscape:label="wec_sost_name_area" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.52777px;line-height:1.25;font-family:cabin;-inkscape-font-specification:cabin;text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="-25.674089"
+           y="-48.721184"
+           id="text10262-4-1-8-9-2-6-2"
+           inkscape:label="wec_sost_name_text"><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.264583"
+             x="-25.674089"
+             y="-48.721184"
+             id="tspan1060">Sea of storms</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

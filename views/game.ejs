@@ -1,6 +1,8 @@
 <%- include('header') -%>
   <%- include('navbar') -%>
-    <div class="basic class" id="main"></div>
+
+
+    <div class="text-center" id="main"></div>
 
 
 
@@ -43,7 +45,6 @@
 
       ws.onmessage = function (event) {
         div = "";
-        navbar = "";
         console.log(event.data);
         let data = JSON.parse(event.data);
 
@@ -89,11 +90,11 @@
             main.innerHTML = `<object class="border" id="svg_map" data="/assets/map.svg" type="image/svg+xml"></object>`;
 
             objet = document.getElementById("svg_map")
-            objet.addEventListener('load', function () {
+            objet.addEventListener('load', async function () {
               objContent = objet.contentDocument
 
 
-              fetch("/static/territory.json")
+              await fetch("/static/territory.json")
                 .then(response => response.json())
                 .then(territories => {
                   for (const item of territories) {
@@ -102,12 +103,15 @@
 
 
                     for (let i = 1; i < item_children.length; i++) {
-                      for (subchild of Array.from(item_children[i].children)) {
+                      if (item_children[i].getAttribute('id') != `svg_${item.fields.tag}_anchor`) {
 
-                        subchild_id = subchild.getAttribute('id');
-                        if (subchild_id != `svg_${item.fields.tag}_neutral_round` && subchild_id != `svg_${item.fields.tag}_garrison_round` &&
-                          subchild_id != `svg_${item.fields.tag}_neutral_text` && subchild_id != `svg_${item.fields.tag}_garrison_text`) {
-                          subchild.setAttribute("display", "none")
+                        for (subchild of Array.from(item_children[i].children)) {
+
+                          subchild_id = subchild.getAttribute('id');
+                          if (subchild_id != `svg_${item.fields.tag}_neutral_round` && subchild_id != `svg_${item.fields.tag}_garrison_round` &&
+                            subchild_id != `svg_${item.fields.tag}_neutral_text` && subchild_id != `svg_${item.fields.tag}_garrison_text`) {
+                            subchild.setAttribute("display", "none")
+                          }
                         }
                       }
 
@@ -120,7 +124,7 @@
                       territory_svg = objContent.getElementById(`svg_${territory}`)
 
                       territory_children = Array.from(territory_svg.childNodes).filter(node => node.nodeType === Node.ELEMENT_NODE);
-                      console.log(territory_children)
+
                       for (let i = 1; i < territory_children.length; i++) {
                         for (subchild of Array.from(territory_children[i].children)) {
 
