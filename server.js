@@ -1,9 +1,13 @@
 const express = require("express");
+const session = require("express-session");
 const router = require("./router");
+
+var serverIPAddress = require("ip").address();
 const http = require("http");
 const path = require("path");
+
 const bodyparser = require("body-parser");
-const session = require("express-session");
+
 const { v4: uuidv4 } = require("uuid");
 const WebSocket = require("ws");
 var database = require("./database");
@@ -16,10 +20,13 @@ const server = http.createServer(app);
 const influences = require("./influences.json");
 const init_army = require("./init_army.json");
 const westeros_cards = require("./westeros_cards.json");
+const orders = require("./orders.json");
 
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+
+
 app.set("view engine", "ejs");
 
 //load assets static
@@ -247,6 +254,7 @@ wss.on("connection", function connection(ws, req) {
             if (new_info["info"]["families"][keys[i]]["value"] != 0) {
               console.log(init_army[i])
               new_info["info"]["families"][keys[i]].territory = init_army[i]
+              new_info["info"]["families"][keys[i]].orders = Object.keys(orders)
             }
             else {
               delete new_info["info"]["families"][keys[i]];
@@ -345,7 +353,7 @@ wss.on("connection", function connection(ws, req) {
   });
 });
 
-server.listen(port, () => {
+server.listen(port, '0.0.0.0', () => {
   console.log("Listening on port 3000");
 });
 
@@ -357,6 +365,5 @@ function shuffleArray(array) {
     array[j] = temp;
   }
 }
-
 
 module.exports.server = server;

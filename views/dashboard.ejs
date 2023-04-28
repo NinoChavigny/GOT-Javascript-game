@@ -52,7 +52,7 @@
 
   <script>
     var uid = JSON.parse('<%- JSON.stringify(uid) %>');
-    const ws = new WebSocket(`ws://localhost:3000/`);
+    const ws = new WebSocket(`ws://<%- serverIPAddress %>:3000/`);
 
 
     ws.onopen = function () {

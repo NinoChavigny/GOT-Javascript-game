@@ -1,6 +1,6 @@
 <%- include('header') -%>
     <%- include('navbar') -%>
-
+        <div id="stock"></div>
 
         <svg width="267.5mm" height="48.520157mm" viewBox="0 0 267.50001 48.520157" version="1.1" id="svg129451"
             inkscape:version="1.2 (1:1.2+202206011327+fc4e4096c5)" sodipodi:docname="player.svg"
@@ -212,7 +212,77 @@
 
 
 
+        <script>
+            var uid = JSON.parse("<%- JSON.stringify(uid) %>");
+            var roomid = JSON.parse("<%- roomid %>");
+            const ws = new WebSocket(`ws://<%- serverIPAddress %>:3000/${uid}`);
 
+            let div = document.getElementById("stock")
+
+            ws.onopen = function () {
+                playing(uid, roomid);
+            };
+
+            ws.onmessage = function (event) {
+                let data = JSON.parse(event.data);
+                roomtype = data["room_type"]
+
+                if (data["msg"] == "infos") {
+                    const familie_values = Object.values(data["info"]["families"])
+                    liste_nom = Object.keys(data["info"]["families"])
+
+                    var element = familie_values.find(item => item.value === uid)
+                    var index = familie_values.indexOf(element)
+
+                    available_orders = data["info"]["families"][`${liste_nom[index]}`]["orders"]
+                    console.log(available_orders)
+
+                    console.log(document.querySelector(`g[inkscape\\:label=order_raid_special`))
+
+                    for (const order of available_orders) {
+                        if (order != 'hidden') {
+                            div.innerHTML += `<object class="border" id="${order}" onload="build(this, '${order}')" data="/assets/orders/${order}.svg" type="image/svg+xml"></object>`
+                        }
+
+
+                    }
+
+
+
+
+                }
+            }
+
+            function build(element, order) {
+                content = element.contentDocument
+                svg = content.getElementById('svg19471')
+                var g_order = document.querySelector(`g[inkscape\\:label="order_${order}"]`);
+                last_g = svg.getElementById('g102555')
+
+
+                for (child of last_g.children) {
+                    console.log(child.getAttribute('id'))
+                    if (child.getAttribute('id') == 'ellipse19465') {
+                        g_order.appendChild(child)
+                    }
+                    else {
+                        g_order.appendChild(child)
+
+                    }
+                }
+
+
+            }
+
+            function playing(uid, roomid) {
+                const msg = `["playing","${roomid}","${uid}"]`;
+
+                ws.send(msg);
+            }
+
+
+
+        </script>
 
 
 

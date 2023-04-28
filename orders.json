@@ -1,0 +1,18 @@
+{
+    "raid_1": 0,
+    "raid_2": 1,
+    "raid_special": 2,
+    "marches_m1": 3,
+    "marches_p0": 4,
+    "marches_special": 5,
+    "defense_1": 6,
+    "defense_2": 7,
+    "defense_special": 8,
+    "support_1": 9,
+    "support_2": 10,
+    "support_special": 11,
+    "consolidate_1": 12,
+    "consolidate_2": 13,
+    "consolidate_special": 14,
+    "hidden": 15
+}

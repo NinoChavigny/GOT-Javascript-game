@@ -35,7 +35,7 @@
                 var uid = JSON.parse("<%- JSON.stringify(uid) %>");
                 var roomid = JSON.parse("<%- roomid %>");
 
-                const ws = new WebSocket(`ws://localhost:3000/${uid}`);
+                const ws = new WebSocket(`ws://<%- serverIPAddress %>:3000/${uid}`);
                 ws.onopen = function () {
                     playing(uid, roomid);
                 };
