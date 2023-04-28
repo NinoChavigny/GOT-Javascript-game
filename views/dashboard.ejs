@@ -51,15 +51,20 @@
 
 
   <script>
+    ///définition des variables générales à l'aide de EJS et des données renvoyées par le routeur
+
     var uid = JSON.parse('<%- JSON.stringify(uid) %>');
+
+    ///Création du client Websocket
     const ws = new WebSocket(`ws://<%- serverIPAddress %>:3000/`);
 
-
+    ///Actions à l'ouverture du client websocket
     ws.onopen = function () {
       connection(uid);
 
     }
 
+    ///Actions sur chaque message provenant du serveur WebSocket
     ws.onmessage = function (event) {
       let tableData = document.getElementById("table1");
       let tableData2 = document.getElementById("table2");

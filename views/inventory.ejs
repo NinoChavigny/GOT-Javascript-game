@@ -213,16 +213,22 @@
 
 
         <script>
+            ///définition des variables générales à l'aide de EJS et des données renvoyées par le routeur
+
             var uid = JSON.parse("<%- JSON.stringify(uid) %>");
             var roomid = JSON.parse("<%- roomid %>");
+
+            ///Création du client Websocket
             const ws = new WebSocket(`ws://<%- serverIPAddress %>:3000/${uid}`);
 
             let div = document.getElementById("stock")
 
+            ///Actions à l'ouverture du client websocket
             ws.onopen = function () {
                 playing(uid, roomid);
             };
 
+            ///Actions sur chaque message provenant du serveur WebSocket
             ws.onmessage = function (event) {
                 let data = JSON.parse(event.data);
                 roomtype = data["room_type"]

@@ -28,21 +28,26 @@
 
 
     <script>
-
+      ///Définition des éléments HTML pour la gestion du Chat
       const sendBtn = document.querySelector('#send');
       const messages = document.querySelector('#messages');
       const messageBox = document.querySelector('#messageBox');
+
+      ///définition des variables générales à l'aide de EJS et des données renvoyées par le routeur
 
       let main = document.getElementById("main");
       var uid = JSON.parse("<%- JSON.stringify(uid) %>");
       var roomid = JSON.parse("<%- roomid %>");
 
+      ///Création du client Websocket
       const ws = new WebSocket(`ws://<%- serverIPAddress %>:3000/${uid}`);
 
+      ///Actions à l'ouverture du client websocket
       ws.onopen = function () {
         playing(uid, roomid);
       };
 
+      ///Actions sur chaque message provenant du serveur WebSocket
       ws.onmessage = function (event) {
         div = "";
         console.log(event.data);
@@ -54,6 +59,7 @@
           room_type = data["room_type"]
           values_arr = []
 
+          ///Cas 1: Partie Non Lancée
           if (data["info"]["started"] == 0) {
 
             for (j = 0; j < keys.length; j++) {
@@ -86,6 +92,7 @@
             }
 
           }
+          ///Partie lancée: Cas 2
           else {
             main.innerHTML = `<object class="border" id="svg_map" data="/assets/map.svg" type="image/svg+xml"></object>`;
 

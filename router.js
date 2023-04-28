@@ -7,7 +7,7 @@ var serverIPAddress = require("ip").address();
 
 
 
-/// login user
+///Connexion utilisateur via MySQL
 router.post('/login', (req, res) => {
     var user_email_address = req.body.email;
 
@@ -45,11 +45,12 @@ router.post('/login', (req, res) => {
 
 });
 
+///Redirection page Inscription utilisateur via MySQL
 router.get('/signup', (req, res) => {
     res.render('signup', { title: "Sign up" })
 })
 
-/// login user
+///Inscription utilisateur via MySQL
 router.post('/signup', (req, res) => {
 
     var email = req.body.email;
@@ -87,7 +88,7 @@ router.post('/signup', (req, res) => {
 });
 
 
-// route for dashboard
+//Redirection vers le tableau de bord
 router.get('/dashboard', (req, res) => {
     if (req.session.user) {
         res.render('dashboard', { user: req.session.user, uid: req.session.uid, serverIPAddress: serverIPAddress })
@@ -96,7 +97,7 @@ router.get('/dashboard', (req, res) => {
     }
 })
 
-// route for logout
+//Déconnexion utilisateur
 router.get('/logout', (req, res) => {
     req.session.destroy(function (err) {
         if (err) {
@@ -109,7 +110,7 @@ router.get('/logout', (req, res) => {
 })
 
 
-// route for play
+//Redirection vers la partie de jeu selectionnée
 router.get('/play', (req, res) => {
     if (req.session.user && req.session.uid == req.query.uid) {
         req.session.roomid = req.query.roomid;
@@ -120,6 +121,7 @@ router.get('/play', (req, res) => {
     }
 })
 
+///redirection page pistes influences
 router.get('/influences', (req, res) => {
     if (req.session.user && req.session.uid) {
         res.render('influences', { title: 'Influence', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid, serverIPAddress: serverIPAddress })
@@ -128,6 +130,7 @@ router.get('/influences', (req, res) => {
     }
 })
 
+///Redirection carte de jeu
 router.get('/home', (req, res) => {
     if (req.session.user) {
         res.render('game', { title: 'Game', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid, serverIPAddress: serverIPAddress })
@@ -136,6 +139,8 @@ router.get('/home', (req, res) => {
     }
 })
 
+
+///Redirection vers page des cartes Westeros et Wildings
 router.get('/gamecards', (req, res) => {
     if (req.session.user && req.session.uid) {
         res.render('gamecards', { title: 'gamecards', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid, serverIPAddress: serverIPAddress })
@@ -144,6 +149,7 @@ router.get('/gamecards', (req, res) => {
     }
 })
 
+///Redirection vers l'inventaire du joueur
 router.get('/inventory', (req, res) => {
     if (req.session.user && req.session.uid) {
         res.render('inventory', { title: 'inventory', user: req.session.user, uid: req.session.uid, roomid: req.session.roomid, serverIPAddress: serverIPAddress })

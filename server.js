@@ -23,16 +23,18 @@ const westeros_cards = require("./westeros_cards.json");
 const orders = require("./orders.json");
 
 
+///Mise en place de bodyparser pour capturé les identifiants utilisateurs
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
-
+///Définition du moteur de vue et de template EJS
 app.set("view engine", "ejs");
 
-//load assets static
+//Définition des chemins pour accéder aux différents fichiers statiques (img, etc..)
 app.use("/static", express.static(path.join(__dirname, "public")));
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
+///Mise en place de la librairie express-session pour les sessions utilisateurs
 app.use(
   session({
     secret: uuidv4(),
@@ -41,15 +43,18 @@ app.use(
   })
 );
 
-//home route
+//première connexion d'un utilisateur redirigé sur la page de connexion
 app.get("/", (req, res) => {
   res.render("base", { title: "Login Page" });
 });
 
+///Mise en place du routeur de l'application ppur gérer les différentes requêtes HTTP
 app.use("/route", router);
 
+///Création du serveur WebScoket
 const wss = new WebSocket.Server({ server: server });
 
+///Définition des actions ci-dessous en fonction des actions  des clients websockets (connection, message...)
 wss.on("connection", function connection(ws, req) {
   console.log("A new client Connected!");
   console.log(req.url[1]);
@@ -353,10 +358,12 @@ wss.on("connection", function connection(ws, req) {
   });
 });
 
+///Lancement du serveur qui écoute les reqûetes
 server.listen(port, '0.0.0.0', () => {
   console.log("Listening on port 3000");
 });
 
+///fonction de mélange de decks
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
